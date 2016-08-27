@@ -11,30 +11,53 @@ app.controller('MapCtrl', function($scope, $cordovaGeolocation) {
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
-        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-        
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);       
+
         google.maps.event.addListener(map, 'click', function(event) {
-          placeMarker(event.latLng);
-        });
+     
+     var confirma = confirm("Um marcador será adicionado nessas coordenadas: " + event.latLng);
+     if(confirma == true){
+      addMarker(event.latLng, map);
+     }
+  });
 
-        function placeMarker(location) {
-          var marker = new google.maps.Marker({
-            position: location, 
-            map : map
-          });
+var marcador = 1;
+
+function addMarker(location) {
+    var marker = new google.maps.Marker({
+    position: location,
+    map: map,
+    draggable:true,
+    animation: google.maps.Animation.DROP,
+    title: "Marcador " + marcador
+  });
+  marcador++;
+  marker.addListener('click', function(){
+    alert("Marcador " +marcador+ "\nCoordenadas : " +marker.position); 
+  });
+}
+
+
+        var bluedot = {
+              path: google.maps.SymbolPath.CIRCLE,
+              fillColor: '#6495ED',
+              fillOpacity: 1,
+              scale: 4,
+              strokeColor: '#fff',
+              strokeWeight: 1.5
+
         }
-
+  
 
         var myloc = new google.maps.Marker({
           clickable: false,
-          icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
-                                                    new google.maps.Size(22,22),
-                                                    new google.maps.Point(0,18),
-                                                    new google.maps.Point(11,11)),
+          icon: bluedot,
           shadow: null,
           zIndex: 999,
           map: map
         });
+
+
 
         if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
           var latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);

@@ -1,5 +1,5 @@
 app.controller('MapCtrl', function($scope, $cordovaGeolocation) {
-  var options = {timeout: 10000, enableHighAccuracy: true};
+  var options = {timeout: 10000, enableHighAccuracy: true, EnableContinuousZoom: true};
  
     $cordovaGeolocation.getCurrentPosition(options).then(function(position){
 
@@ -21,7 +21,7 @@ app.controller('MapCtrl', function($scope, $cordovaGeolocation) {
      }
   });
 
-var marcador = 1;
+var marcador = 0;
 
 function addMarker(location) {
     var marker = new google.maps.Marker({
@@ -31,11 +31,14 @@ function addMarker(location) {
     animation: google.maps.Animation.DROP,
     title: "Marcador " + marcador
   });
+  map.panTo(marker.getPosition());
+  map.setZoom(17);
   marcador++;
   marker.addListener('click', function(){
-    alert("Marcador " +marcador+ "\nCoordenadas : " +marker.position); 
+     alert("Marcador " +marcador+ "\nCoordenadas : " +marker.position); 
   });
 }
+
 
 
         var bluedot = {

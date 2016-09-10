@@ -5,6 +5,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
+    controller: 'MapCtrl'
   })
 
   .state('app.mapa', {

@@ -1,29 +1,32 @@
 app.controller('MapCtrl', function($scope, $cordovaGeolocation) {
   var options = {timeout: 10000, enableHighAccuracy: true, EnableContinuousZoom: true};
  
+
+
     $cordovaGeolocation.getCurrentPosition(options).then(function(position){
 
-        var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        var posicaoAtual = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       
         var mapOptions = {
-          center: latLng,
+          center: posicaoAtual,
           zoom: 15,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
-        var map = new google.maps.Map(document.getElementById("map"), mapOptions);       
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);      
 
-        google.maps.event.addListener(map, 'click', function(event) {
-     
-     var confirma = confirm("Um marcador será adicionado nessas coordenadas: " + event.latLng);
-     if(confirma == true){
-      addMarker(event.latLng, map);
+$scope.inserirPostagem = function(){
+  var confirma = confirm("Deseja adicionar uma nova postagem?");
+     if(confirma == true){   
+      addMarker(posicaoAtual);
      }
-  });
+};
+
 
 var marcador = 0;
 
 function addMarker(location) {
+
     var marker = new google.maps.Marker({
     position: location,
     map: map,
@@ -38,6 +41,7 @@ function addMarker(location) {
      alert("Marcador " +marcador+ "\nCoordenadas : " +marker.position); 
   });
 }
+
 
 
 
@@ -86,4 +90,7 @@ function addMarker(location) {
         }, function(error){
           console.log("Could not get location");
         });
+
+
+
 });

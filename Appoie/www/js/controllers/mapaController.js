@@ -1,4 +1,4 @@
-app.controller('MapCtrl', function($scope, $cordovaGeolocation) {
+app.controller('MapCtrl', function($scope, $cordovaGeolocation, $cordovaCamera) {
   var options = {timeout: 10000, enableHighAccuracy: true, EnableContinuousZoom: true};
  
 
@@ -10,7 +10,8 @@ app.controller('MapCtrl', function($scope, $cordovaGeolocation) {
         var mapOptions = {
           center: posicaoAtual,
           zoom: 15,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          disableDefaultUI: true
         };
 
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);      
@@ -19,6 +20,9 @@ $scope.inserirPostagem = function(){
   var confirma = confirm("Deseja adicionar uma nova postagem?");
      if(confirma == true){   
       addMarker(posicaoAtual);
+      console.log("marcador ok");
+      takePicture();
+      console.log("camera ok");
      }
 };
 
@@ -40,8 +44,36 @@ function addMarker(location) {
   marker.addListener('click', function(){
      alert("Marcador " +marcador+ "\nCoordenadas : " +marker.position); 
   });
+
 }
 
+function takePicture(){
+
+  document.addEventListener("deviceready", function () {
+
+          var options = {
+            quality: 50,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: Camera.PictureSourceType.CAMERA,
+            allowEdit: true,
+            encodingType: Camera.EncodingType.JPEG,
+            targetWidth: 100,
+            targetHeight: 100,
+            popoverOptions: CameraPopoverOptions,
+            saveToPhotoAlbum: false,
+          correctOrientation:true
+          };
+
+          $cordovaCamera.getPicture(options).then(function(imageData) {
+            var image = document.getElementById('myImage');
+            image.src = "data:image/jpeg;base64," + imageData;
+          }, function(err) {
+            // error
+          });
+
+          }, false);
+
+}
 
 
 

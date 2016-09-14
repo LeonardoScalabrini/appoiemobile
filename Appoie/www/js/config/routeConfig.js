@@ -27,6 +27,14 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     })
 
+    .state('app.postar', {
+      url: '/postar',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/postar.html'
+        }
+      }
+    })
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/mapa');
 })

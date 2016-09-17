@@ -9,6 +9,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
   })
 
   .state('app.mapa', {
+      cache: false,
       url: '/mapa',
       views: {
         'menuContent': {
@@ -35,6 +36,17 @@ app.config(function($stateProvider, $urlRouterProvider) {
         }
       }
     })
+
+    .state('app.postagens', {
+      cache: false,
+      url: '/postagens',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/postagens.html',
+          controller: 'visualizacaoController'
+        }
+      }
+    })
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/mapa');
+  $urlRouterProvider.otherwise('/app/postagens');
 })

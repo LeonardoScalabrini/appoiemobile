@@ -1,21 +1,12 @@
-<div class="bar bar-subheader bar-stable">
-    <div class="row">
-      <div class="col">Meus Posts</div>
-      <div class="col">Abertos</div>
-      <div class="col">Resolvidos</div>
-    </div>
-</div>
 <ion-view>
     <ion-content>
-        <div id="map" data-tap-disabled="true"></div>
-
-        <div class="float-button">
-		    <span class="height-fix">
-		    	<a class="content">
-		        	<i class="ion-android-add" ng-click="inserirPostagem()"> </i>
-		    	</a>
-		    </span>
-		</div>
-
+      <div id="map" data-tap-disabled="true"></div>
+      <div class="float-button" ng-click="sucesso()">
+        <span class="height-fix">
+          <a class="content">
+              <i class="concluirPost">Concluir</i>
+          </a>
+        </span>
+      </div>
     </ion-content>
-</ion-view>
+</ion-view> 

@@ -1,17 +1,37 @@
 <ion-view>
     <ion-content>
         <div class="list">
-        	
-        	<form name="publicacao" ng-submit="publicar(postagem)">
-        		<div class="item item-image">
-        			<img ng-src="{{foto}}" ng-model="postagem.foto">
-        		</div>
+            
+            <form name="publicacao" ng-submit="publicar(postagem)">
+                <div class="item item-image">
+                    <img ng-src="{{foto}}" ng-model="postagem.foto">
+                </div>
+                <div class="descricaoPostagem">
+                    <h4>Descreva o problema encontrado:</h4>
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                          Categoria
+                        </div>
+                        <select>
+                            <option selected>Arborização</option>
+                            <option>Iluminação</option>
+                            <option>Pavimentação</option>
+                            <option>Segurança</option>
+                            <option>Trânsito</option>
+                        </select>
+                    </label>
+                    <label class="item item-input">
+                        <input type="text" placeholder="Título">
+                    </label>
+                    <label class="item item-input">
+                        <textarea placeholder="Descrição do problema"></textarea>
+                    </label>
+                </div>
+                <button class="button button-block button-positive" ng-click="adicionarMarker()">
+                    Avançar
+                </button>
+            </form>
 
-        		<button class="button button-block button-positive">
-  					Publicar
-				</button>
-			</form>
-
-       	</div>
+        </div>
     </ion-content>
 </ion-view>

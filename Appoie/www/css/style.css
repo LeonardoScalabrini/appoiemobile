@@ -8,15 +8,18 @@
     height: 100%;
 }
 
+
 .float-button {
-  border-radius: 50%;
-  width: 20px;
-  padding: 30px;
-  font-size: 40px;
+  border-radius: 5px;
+  width: 90%;
+  padding: 25px;
+  font-size: 18px;
   background: #0c60ee;
-  position: fixed;
-  bottom: 20px; /* Adjust to where you want it */
-  right: 20px; /* Adjust to where you want it */
+  position: fixed;  
+  bottom: 20px; 
+  margin: 0 auto;
+  left: 20px;
+  right: 20px; 
   z-index: 9999;
 }
 
@@ -27,11 +30,10 @@
 .float-button .content {
   position: absolute;
   left: 0;
-  top: 50%;
   height: 100%;
   width: 100%;
   text-align: center;
-  margin-top: -20px; /* Note, this must be half the font size */
+  margin-top: -10px; 
   color: #ffffff;
 }
 
@@ -44,4 +46,14 @@
 }
 .col{
   text-align: center;
+}
+.descricaoPostagem h4{
+  padding: 0px 0px 0px 10px;
+}
+
+.descricaoPostagem{
+  position: static; 
+} 
+textarea{
+  height: 50px;
 }

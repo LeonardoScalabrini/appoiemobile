@@ -1,4 +1,4 @@
-app.controller('MapCtrl', function($scope, $rootScope, $cordovaGeolocation, $cordovaCamera, $state) {
+app.controller('MapCtrl', function($scope, $ionicPopup, $rootScope, $cordovaGeolocation, $cordovaCamera, $state) {
   var options = {timeout: 10000, enableHighAccuracy: true, EnableContinuousZoom: true};
  
 
@@ -17,20 +17,55 @@ app.controller('MapCtrl', function($scope, $rootScope, $cordovaGeolocation, $cor
         var map = new google.maps.Map(document.getElementById("map"), mapOptions);      
 
         $scope.inserirPostagem = function(){
-          var confirma = confirm("Deseja adicionar uma nova postagem?");
-             if(confirma == true){   
-              addMarker(posicaoAtual);
-              console.log("marcador ok");
-              
-              console.log("camera ok");
-             }
+            var confirmPopup = $ionicPopup.confirm({
+                                  title: 'Nova Postagem',
+                                  template: 'Deseja fazer uma postagem?'
+                               });
+
+            confirmPopup.then(function(res) {
+              if(res == true) {
+                takePicture();
+              }
+            });
         };
 
+
+
+
+        
+        //PROFESSOR ESSA FUNÇÃO TERIA QUE CARREGAR O MAPA E DEPOIS ADICIONAR O MARKER
+        //Então professor estou trabalhando com duas views de mapa para usar controllers distintos,
+        //um para postar e o outro para visualizar as postagens de outros usuarios do app.
+        //lá no config (routeConfig) eu desabilitei o cache dele, pois com o cache nao era possivel 
+        //carregar o mapa e views diferentes. Se puder me ajudar a resolver isso, ficaria mt feliz. kk'
+
+        $scope.adicionarMarker = function(){
+           if ($state.go("app.mapa") == true) {
+              addMarker(posicaoAtual); 
+           };
+        }
+
+
+
+
+
+
+
+
+        $scope.sucesso = function(){
+          var alertPopup = $ionicPopup.alert({
+            title: 'Confirmação',
+            template: 'Salvo com sucesso! :)'
+          });
+
+          alertPopup.then(function(res) {
+              $state.go("app.postagens");//TODO - Chamar outra view de mapa carregando as postagens realizadas
+          });
+        }
 
         var marcador = 0;
 
         function addMarker(location) {
-
             var marker = new google.maps.Marker({
             position: location,
             map: map,
@@ -41,17 +76,11 @@ app.controller('MapCtrl', function($scope, $rootScope, $cordovaGeolocation, $cor
           map.panTo(marker.getPosition());
           map.setZoom(17);
           marcador++;
-          marker.addListener('click', function(){
-             //alert("Marcador " +marcador+ "\nCoordenadas : " +marker.position); 
-             takePicture();
-          });
-
         }
 
         function takePicture(){
 
           if(typeof(Camera) != "undefined"){
-
             var options = {
                 quality: 100,
                 destinationType: Camera.DestinationType.DATA_URL,
@@ -103,18 +132,9 @@ app.controller('MapCtrl', function($scope, $rootScope, $cordovaGeolocation, $cor
           // ...
         });
         
-        // var MyPosition = new google.maps.Marker({
-        //     position: latLng,
-        //     map: map,
-        //     draggable:true,
-        //     icon: circulo
-
-        // });
-        
-
-        }, function(error){
-          console.log("Could not get location");
-        });
+  }, function(error){
+    console.log("Could not get location");
+  });
 
 
 

@@ -32,7 +32,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
       url: '/postar',
       views: {
         'menuContent': {
-          templateUrl: 'templates/postar.html'
+          templateUrl: 'templates/postar.html',
+          controller: 'postarController'
         }
       }
     })
@@ -43,7 +44,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
       views: {
         'menuContent': {
           templateUrl: 'templates/postagens.html',
-          controller: 'visualizacaoController'
+          controller: 'postagensController'
         }
       }
     })

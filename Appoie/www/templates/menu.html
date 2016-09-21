@@ -6,7 +6,7 @@
 
         <div class="bar bar-header">
             <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
-            <button class="button icon-right ion-android-add" ng-click="inserirPostagem()"></button>
+            <button id="novaPostagem" class="button icon-right ion-android-add" ng-click="inserirPostagem()"></button>
         </div>
   
       </ion-nav-buttons>
@@ -28,9 +28,9 @@
       </div>
     </ion-header-bar>
     
-    <ion-content>
+    <ion-content class="has-header">
       <ion-list class="padding">
-        <ion-item menu-close href="#/app/postagens">Mapa</ion-item>
+        <ion-item menu-close href="#/app/postagens">Publicações</ion-item>
         <ion-item menu-close href="#/app/sobre">Sobre</ion-item>
       </ion-list>
     </ion-content>

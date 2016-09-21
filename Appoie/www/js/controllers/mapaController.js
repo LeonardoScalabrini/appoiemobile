@@ -14,7 +14,8 @@ app.controller('MapCtrl', function($scope, $ionicPopup, $rootScope, $cordovaGeol
           disableDefaultUI: true
         };
 
-        var map = new google.maps.Map(document.getElementById("map"), mapOptions);      
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);   
+           
 
         $scope.inserirPostagem = function(){
             var confirmPopup = $ionicPopup.confirm({
@@ -29,29 +30,6 @@ app.controller('MapCtrl', function($scope, $ionicPopup, $rootScope, $cordovaGeol
             });
         };
 
-
-
-
-        
-        //PROFESSOR ESSA FUNÇÃO TERIA QUE CARREGAR O MAPA E DEPOIS ADICIONAR O MARKER
-        //Então professor estou trabalhando com duas views de mapa para usar controllers distintos,
-        //um para postar e o outro para visualizar as postagens de outros usuarios do app.
-        //lá no config (routeConfig) eu desabilitei o cache dele, pois com o cache nao era possivel 
-        //carregar o mapa e views diferentes. Se puder me ajudar a resolver isso, ficaria mt feliz. kk'
-
-        $scope.adicionarMarker = function(){
-           if ($state.go("app.mapa") == true) {
-              addMarker(posicaoAtual); 
-           };
-        }
-
-
-
-
-
-
-
-
         $scope.sucesso = function(){
           var alertPopup = $ionicPopup.alert({
             title: 'Confirmação',
@@ -59,7 +37,7 @@ app.controller('MapCtrl', function($scope, $ionicPopup, $rootScope, $cordovaGeol
           });
 
           alertPopup.then(function(res) {
-              $state.go("app.postagens");//TODO - Chamar outra view de mapa carregando as postagens realizadas
+              $state.go("app.postagens");
           });
         }
 
@@ -77,6 +55,12 @@ app.controller('MapCtrl', function($scope, $ionicPopup, $rootScope, $cordovaGeol
           map.setZoom(17);
           marcador++;
         }
+    
+        google.maps.event.addListener(map, 'click', function(event) {
+          addMarker(event.latLng, map);
+        });
+        
+
 
         function takePicture(){
 
@@ -108,29 +92,6 @@ app.controller('MapCtrl', function($scope, $ionicPopup, $rootScope, $cordovaGeol
             }
         }
 
-        var bluedot = {
-          path: google.maps.SymbolPath.CIRCLE,
-          fillColor: '#6495ED',
-          fillOpacity: 5,
-          scale: 8,
-          strokeColor: '#fff',
-          strokeWeight: 1.5
-        }
-  
-        var myloc = new google.maps.Marker({
-          clickable: false,
-          icon: bluedot,
-          shadow: null,
-          zIndex: 999,
-          map: map
-        });
-
-        if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
-          var latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-          myloc.setPosition(latLng);
-        }, function(error) {
-          // ...
-        });
         
   }, function(error){
     console.log("Could not get location");

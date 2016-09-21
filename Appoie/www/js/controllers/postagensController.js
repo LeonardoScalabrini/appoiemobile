@@ -1,7 +1,9 @@
-app.controller('visualizacaoController', function($scope, $ionicPopup, $rootScope, $cordovaGeolocation, $state) {
+app.controller('postagensController', function($scope, $ionicPopup, $rootScope, $cordovaGeolocation, $state) {
 
 	var options = {timeout: 10000, enableHighAccuracy: true, EnableContinuousZoom: true};
  
+
+
     $cordovaGeolocation.getCurrentPosition(options).then(function(position){
 
         var posicaoAtual = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -40,7 +42,10 @@ app.controller('visualizacaoController', function($scope, $ionicPopup, $rootScop
           // ...
         });
 
-    }, function(error){
-    	console.log("Could not get location");
-  	});
+
+
+
+         
+    });
+
 });

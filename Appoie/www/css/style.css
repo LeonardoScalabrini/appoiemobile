@@ -39,6 +39,7 @@
 
 .menubar{
   height: 64px;
+  background: #32a2a4;
 }
 
 .logo{
@@ -56,4 +57,18 @@
 } 
 textarea{
   height: 50px;
+}
+.bar.bar-positive {
+    background-color: #575756;
+    border: none;
+    color: #fff; 
+}
+
+#novaPostagem{
+  background-color: #32a2a4;
+  border-color:  #32a2a4;
+  float: right;
+}
+.clr{
+  clear: both;
 }

@@ -15,7 +15,7 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
           disableDefaultUI: true
         };
 
-        var map = new google.maps.Map(document.getElementById("map"), mapOptions);  
+        var mapPostagens = new google.maps.Map(document.getElementById("mapPostagens"), mapOptions);  
 
 
         var bluedot = {
@@ -32,7 +32,7 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
           icon: bluedot,
           shadow: null,
           zIndex: 999,
-          map: map
+          map: mapPostagens
         });
 
         if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {

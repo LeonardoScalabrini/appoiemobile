@@ -35,12 +35,19 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
           map: mapPostagens
         });
 
+        ;
+
+        setInterval(function() { 
         if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
           var latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
           myloc.setPosition(latLng);
         }, function(error) {
           // ...
         });
+          {
+           enableHighAccuracy: true
+          }
+        }, 1);
 
 
 

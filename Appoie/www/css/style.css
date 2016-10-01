@@ -13,19 +13,19 @@
     height: 100%;
 }
 
-
 .float-button {
   border-radius: 5px;
-  width: 90%;
+  width: 60px;
+  height: 60px;
   padding: 25px;
-  font-size: 18px;
-  background: #0c60ee;
+  font-size: 30px;
+  background: #575756;
   position: fixed;  
   bottom: 20px; 
   margin: 0 auto;
   left: 20px;
   right: 20px; 
-  z-index: 9999;
+  border-radius: 100%;
 }
 
 .float-button .height_fix {
@@ -60,23 +60,27 @@
 .descricaoPostagem{
   position: static; 
 } 
-
 textarea{
-  height: 50px;
+  height: 40px;
 }
-
-.bar.bar-positive {
+.bar.bar-dark {
     background-color: #575756;
-    border: none;
+    border-color:  #575756;
     color: #fff; 
 }
-
 #novaPostagem{
-  background-color: #32a2a4;
-  border-color:  #32a2a4;
-  float: right;
+  background-color: #575756;
+  border-color:  #575756;
 }
-
-.clr{
-  clear: both;
+.title{
+  padding-left: 50px;
+}
+.miniatura{
+  padding: 10px;
+}
+.tituloDescricao h2{
+  font-size: 17px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: -10px;
 }

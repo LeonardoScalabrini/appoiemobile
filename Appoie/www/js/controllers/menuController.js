@@ -16,6 +16,7 @@ app.controller('menuController', function($scope, $ionicPopup, $rootScope, $cord
     
        function takePicture(){
 
+          
           if(typeof(Camera) != "undefined"){
             var options = {
                 quality: 100,

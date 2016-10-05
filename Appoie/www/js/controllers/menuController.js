@@ -25,7 +25,7 @@ app.controller('menuController', function($scope, $ionicPopup, $rootScope, $cord
                 allowEdit: true,
                 encodingType: Camera.EncodingType.JPEG,
                 targetWidth: 700,
-                targetHeight: 500,
+                targetHeight: 480,
                 popoverOptions: CameraPopoverOptions,
                 saveToPhotoAlbum: false,
                 correctOrientation:true

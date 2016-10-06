@@ -19,11 +19,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     })
 
-    .state('app.sobre', {
-      url: '/sobre',
+    .state('app.configuracoes', {
+      url: '/configuracoes',
       views: {
         'menuContent': {
-          templateUrl: 'templates/sobre.html'
+          templateUrl: 'templates/configuracoes.html'
         }
       }
     })

@@ -2,16 +2,16 @@
 .scroll {
     height: 100%;
 }
- 
-#map {
+ #map {
     width: 100%;
     height: 100%;
 }
-
 #mapPostagens {
     width: 100%;
     height: 100%;
 }
+
+/*---------------BOTÃO SOBRE O MAPA-------------------------*/
 
 .float-button {
   border-radius: 5px;
@@ -42,8 +42,34 @@
   color: #ffffff;
 }
 
+/*-----------------TEXTO SOBRE O MAPA-------------------------*/
+
+.float-text {
+  font-size: 24px;
+  position: fixed;  
+  bottom: 95%;
+  margin: 0 auto;
+  left: 20px;
+  right: 20px; 
+}
+
+.float-text .height_fixo {
+  margin-bottom: 100%;
+}
+
+.float-text .content {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: -15px; 
+  color: #ffffff;
+}
+
+
+/*---------------------------------------------------------------*/
+
 .menubar{
-  height: 64px;
   background: #32a2a4;
 }
 
@@ -84,3 +110,49 @@ textarea{
   text-align: center;
   padding-top: -10px;
 }
+#fotoPerfil{
+  background-color: #32a2a4;
+  padding-top: 0px;
+  margin-top: 0px;
+}
+#fotoPerfil h4{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 17px;
+  color: #fff;
+}
+#fotoPerfil p{
+  color: #fff;
+}
+.list{
+  padding-top: 0px;
+}
+.itensMenu{
+  padding-left: 15px; 
+}
+.itensMenu ul li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.itensMenu ul li a{
+  text-decoration: none;
+  color: #000;
+  font-size: 15px;
+  font-weight: bold;
+  padding-left: 30px;
+}
+.ion-android-locate{
+  font-size: 30px;
+  color: #808080;
+}
+.ion-settings{
+  font-size: 30px;
+  color: #808080;
+}
+
+
+
+
+
+
+

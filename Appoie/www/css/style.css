@@ -19,8 +19,10 @@
   height: 60px;
   padding: 25px;
   font-size: 30px;
-  background: #575756;
-  position: fixed;  
+    background: #32a2a4;
+
+/*  background: #575756;
+*/  position: fixed;  
   bottom: 20px; 
   margin: 0 auto;
   left: 20px;
@@ -90,14 +92,14 @@ textarea{
   height: 40px;
 }
 .bar.bar-dark {
-    background-color: #575756;
+/*    background-color: #575756;
     border-color:  #575756;
-    color: #fff; 
+*/    color: #fff; 
 }
 #novaPostagem{
-  background-color: #575756;
+/*  background-color: #575756;
   border-color:  #575756;
-}
+*/}
 .title{
   padding-left: 50px;
 }

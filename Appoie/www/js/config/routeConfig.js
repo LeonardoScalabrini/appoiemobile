@@ -1,5 +1,16 @@
 app.config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
+    .state('tela-inicial',{
+     url:'/tela-inicial',     
+     templateUrl:'templates/tela-inicial.html',
+     controller:'telaInicialController'
+  })
+
+    .state('login',{
+    url:'/login',
+    templateUrl:'templates/login.html',
+    controller:'telaInicialController'
+  })
 
     .state('app', {
     url: '/app',
@@ -49,5 +60,5 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     })
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/postagens');
+  $urlRouterProvider.otherwise('/tela-inicial');
 })

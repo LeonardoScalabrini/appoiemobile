@@ -11,6 +11,34 @@
     height: 100%;
 }
 
+.tela_inicial{
+  background-image:url(../img/foto-maringa.jpg);   
+  background-size: cover;
+  background-position: center;
+}
+
+.logo-inicio{
+    width: 180px;
+    margin-top: 20%;
+    margin-bottom: 20%;
+    margin-right: 20%;
+    margin-left: 20%;
+}
+
+.logo-inicio span {
+  font-size: 40px;
+  color: #ffffff;
+  margin-top: 20%;
+  margin-bottom: 20%;
+  margin-right: 30%;
+  margin-left: 30%;
+  text-align: center;
+}
+
+.content_view{
+  background-color: rgba(0,0,0,0.5);
+}
+
 /*---------------BOTÃO SOBRE O MAPA-------------------------*/
 
 .float-button {

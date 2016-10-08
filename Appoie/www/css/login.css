@@ -1,0 +1,23 @@
+.content-login {
+	width: 100%;
+	background: rgba(255,255,255,0.9);
+	margin-top: 40px;
+	z-index: 1;
+	padding: 20px;
+}
+.logo-login {
+	margin-left: 140px;
+}
+.letra-logo {
+	font-size: 25px;
+	color: #00C853;	
+	margin-left: 130px;
+}
+.title-login{
+	text-align: center;
+	color: #666666;
+	margin-top: 40px;
+}
+.recuper-cadastra{
+	font-size: 10px;
+}

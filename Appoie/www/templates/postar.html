@@ -1,0 +1,50 @@
+<ion-view>
+
+    <ion-content>
+        <div class="list">
+            
+            <form name="publicacao" ng-submit="publicar(postagem)">
+                <div class="item item-image miniatura">
+                    <img ng-src="{{foto}}" ng-model="postagem.foto" width="100%" height="60%">
+                </div>
+                <div class="descricaoPostagem">
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                          Categoria
+                        </div>
+                        <select>
+                            <option selected>Arborização</option>
+                            <option>Iluminação</option>
+                            <option>Pavimentação</option>
+                            <option>Segurança</option>
+                            <option>Trânsito</option>
+                        </select>
+                    </label>
+                    <div class="item tituloDescricao">
+                        <h2>Descreva o problema encontrado:</h2>
+                    </div>
+                    <label class="item item-input">
+                        <input type="text" placeholder="Título">
+                    </label>
+                    <label class="item item-input">
+                        <textarea placeholder="Descrição do problema"></textarea>
+                    </label>
+                </div>
+                <div class="row">
+                    
+                    <div class="col">
+                        <button class="button button-block button-stable" ng-click="adicionarMarker()">
+                            Cancelar
+                        </button>    
+                    </div><div class="col">
+                        <button class="button button-block button-dark" ng-click="adicionarMarker()">
+                            Avançar
+                        </button>    
+                    </div>
+                </div>
+                
+            </form>
+
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,160 @@
+/* Empty. Add your own CSS if you like */
+.scroll {
+    height: 100%;
+}
+ #map {
+    width: 100%;
+    height: 100%;
+}
+#mapPostagens {
+    width: 100%;
+    height: 100%;
+}
+
+/*---------------BOTÃO SOBRE O MAPA-------------------------*/
+
+.float-button {
+  border-radius: 5px;
+  width: 60px;
+  height: 60px;
+  padding: 25px;
+  font-size: 30px;
+    background: #32a2a4;
+
+/*  background: #575756;
+*/  position: fixed;  
+  bottom: 20px; 
+  margin: 0 auto;
+  left: 20px;
+  right: 20px; 
+  border-radius: 100%;
+}
+
+.float-button .height_fix {
+  margin-top: 100%;
+}
+
+.float-button .content {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  margin-top: -10px; 
+  color: #ffffff;
+}
+
+/*-----------------TEXTO SOBRE O MAPA-------------------------*/
+
+.float-text {
+  font-size: 24px;
+  position: fixed;  
+  bottom: 95%;
+  margin: 0 auto;
+  left: 20px;
+  right: 20px; 
+}
+
+.float-text .height_fixo {
+  margin-bottom: 100%;
+}
+
+.float-text .content {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  margin-top: -15px; 
+  color: #ffffff;
+}
+
+
+/*---------------------------------------------------------------*/
+
+.menubar{
+  background: #32a2a4;
+}
+
+.logo{
+  width: 10px;
+}
+.col{
+  text-align: center;
+}
+.descricaoPostagem h4{
+  padding: 0px 0px 0px 10px;
+}
+
+.descricaoPostagem{
+  position: static; 
+} 
+textarea{
+  height: 40px;
+}
+.bar.bar-dark {
+/*    background-color: #575756;
+    border-color:  #575756;
+*/    color: #fff; 
+}
+#novaPostagem{
+/*  background-color: #575756;
+  border-color:  #575756;
+*/}
+.title{
+  padding-left: 50px;
+}
+.miniatura{
+  padding: 10px;
+}
+.tituloDescricao h2{
+  font-size: 17px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: -10px;
+}
+#fotoPerfil{
+  background-color: #32a2a4;
+  padding-top: 0px;
+  margin-top: 0px;
+}
+#fotoPerfil h4{
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 17px;
+  color: #fff;
+}
+#fotoPerfil p{
+  color: #fff;
+}
+.list{
+  padding-top: 0px;
+}
+.itensMenu{
+  padding-left: 15px; 
+}
+.itensMenu ul li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.itensMenu ul li a{
+  text-decoration: none;
+  color: #000;
+  font-size: 15px;
+  font-weight: bold;
+  padding-left: 30px;
+}
+.ion-android-locate{
+  font-size: 30px;
+  color: #808080;
+}
+.ion-settings{
+  font-size: 30px;
+  color: #808080;
+}
+
+
+
+
+
+
+

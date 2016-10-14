@@ -12,7 +12,7 @@
                         <div class="input-label">
                           Categoria
                         </div>
-                        <select>
+                        <select ng-model="post.categoria">
                             <option selected>Arborização</option>
                             <option>Iluminação</option>
                             <option>Pavimentação</option>
@@ -24,20 +24,20 @@
                         <h2>Descreva o problema encontrado:</h2>
                     </div>
                     <label class="item item-input">
-                        <input type="text" placeholder="Título">
+                        <input type="text" placeholder="Título" ng-model="post.titulo">
                     </label>
                     <label class="item item-input">
-                        <textarea placeholder="Descrição do problema"></textarea>
+                        <textarea placeholder="Descrição do problema" ng-model="post.descricao"></textarea>
                     </label>
                 </div>
                 <div class="row">
                     
                     <div class="col">
-                        <button class="button button-block button-stable" ng-click="adicionarMarker()">
+                        <button class="button button-block button-stable" ng-click="">
                             Cancelar
                         </button>    
                     </div><div class="col">
-                        <button class="button button-block button-dark" ng-click="adicionarMarker()">
+                        <button class="button button-block button-dark" ng-click="adicionarMarker(post)">
                             Avançar
                         </button>    
                     </div>

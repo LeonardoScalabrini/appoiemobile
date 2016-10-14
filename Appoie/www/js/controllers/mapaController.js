@@ -53,18 +53,20 @@ app.controller('MapCtrl', function($scope, $ionicPopup, $rootScope, $cordovaGeol
 
             mapService.salvar($rootScope.publicacao).then(function (response) {
 
+              var alertPopup = $ionicPopup.alert({
+                title: 'Confirmação',
+                template: 'Salvo com sucesso! :)'
+              });
+
+              alertPopup.then(function(res) {
+                $state.go("app.postagens");
+              });
+
             }, function (response) {
 
+              
+
             })
-
-            var alertPopup = $ionicPopup.alert({
-              title: 'Confirmação',
-              template: 'Salvo com sucesso! :)'
-            });
-
-            alertPopup.then(function(res) {
-              $state.go("app.postagens");
-            });
 
           }   
 

@@ -1,4 +1,4 @@
-app.controller('postagensController', function($scope, $ionicPopup, $rootScope, $cordovaGeolocation, $state) {
+app.controller('postagensController', function($scope, $ionicPopup, $rootScope, mapService, $cordovaGeolocation, $state) {
 
 	var options = {timeout: 10000, enableHighAccuracy: true, EnableContinuousZoom: true};
   $scope.icones = [];

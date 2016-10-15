@@ -50,7 +50,7 @@ app.controller('MapCtrl', function($scope, $ionicPopup, $rootScope, $cordovaGeol
             $rootScope.publicacao.lat = posicaoMarcador.lat();
             $rootScope.publicacao.lng = posicaoMarcador.lng();
             $rootScope.publicacao.fotos = [$rootScope.foto];
-
+            console.log($rootScope.publicacao);
             mapService.salvar($rootScope.publicacao).then(function (response) {
 
               var alertPopup = $ionicPopup.alert({

@@ -152,7 +152,9 @@ textarea{
   color: #808080;
 }
 
-
+.bar .title{
+  text-align: none !important;
+}
 
 
 

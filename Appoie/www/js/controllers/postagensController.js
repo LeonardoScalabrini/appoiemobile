@@ -27,20 +27,24 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
           strokeWeight: 1.5
         }
   
-        var myloc = new google.maps.Marker({
+        var localizacaoAtual = new google.maps.Marker({
           clickable: false,
+          position: posicaoAtual,
           icon: bluedot,
           shadow: null,
           zIndex: 999,
           map: mapPostagens
         });
 
-        ;
+        function atualizarPosicao(posicao){
+          localizacaoAtual.setPosition(posicaoAtual);
+        }
+
 
         setInterval(function() { 
         if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
-          var latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-          myloc.setPosition(latLng);
+          var posicao = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+          atualizarPosicao(posicao);
         }, function(error) {
           // ...
         });

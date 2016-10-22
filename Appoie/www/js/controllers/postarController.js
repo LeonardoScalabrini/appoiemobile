@@ -6,7 +6,7 @@ app.controller('postarController', function($scope, $ionicPopup, $rootScope, $co
 		debugger;
 		$rootScope.publicacao.titulo = post.titulo;
 		$rootScope.publicacao.descricao = post.descricao;
-		$rootScope.publicacao.categoria = "ARBORIZACAO"; //post.categoria;
+		$rootScope.publicacao.categoria = post.categoria;
 
         $state.go("app.mapa");
     }

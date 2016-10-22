@@ -15,8 +15,7 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
           disableDefaultUI: true
         };
 
-        var mapPostagens = new google.maps.Map(document.getElementById("mapPostagens"), mapOptions);  
-
+        $scope.map = new google.maps.Map(document.getElementById("mapPostagens"), mapOptions);
 
         var bluedot = {
           path: google.maps.SymbolPath.CIRCLE,
@@ -32,10 +31,8 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
           icon: bluedot,
           shadow: null,
           zIndex: 999,
-          map: mapPostagens
+          map: $scope.map
         });
-
-        ;
 
         setInterval(function() { 
         if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
@@ -47,7 +44,7 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
           {
            enableHighAccuracy: true
           }
-        }, 5000);
+        }, 1);
 
 
         if ($scope.icones.length == 0)
@@ -72,7 +69,6 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
           });
 
         }
-
 
         $scope.initMarkers = function()
         {
@@ -104,8 +100,8 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
           }   
 
           if (icone.src == "") return;
-        
-          var marker = new google.maps.Marker({
+            //debugger;
+            var marker = new google.maps.Marker({
             position: new google.maps.LatLng(marcador.lat, marcador.lng),
             map: $scope.map,
             icon: icone.src,
@@ -133,7 +129,7 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
 
                         +     '<div flex class="apoiar">'
 
-                        +       '<img src="/img/logo-apoiar.png">'
+                        //+       '<img src="/img/logo-apoiar.png">'
                         +       '<p>Apoiar</p>'
                     
                         +     '</div>'
@@ -198,7 +194,7 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
               });
 
               var btnApoiar = iwOuter.find('.apoiar > p');
-              var imgApoiar = iwOuter.find('.apoiar > img');
+              //var imgApoiar = iwOuter.find('.apoiar > img');
 
               btnApoiar.on('click', function(event) {
 

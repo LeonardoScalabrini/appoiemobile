@@ -19,25 +19,27 @@
                             <option>Segurança</option>
                             <option>Trânsito</option>
                         </select>
-                    </label>  
-                    <label class="item item-input item-select">
-                        <div class="input-label">
-                             Sexo
-                        </div>
-                        <select>
-                            <option selected>Masculino</option>
-                            <option>Feminino</option>
-                             <option>Outros</option>
-                        </select>
-                    </label>                 
+                    </label>                
                     
-                    <label class="item item-input">
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Título</span>
                         <input type="text" placeholder="Título" ng-model="post.titulo">
                     </label>
-                    <label class="item item-input">
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Descrição</span>
                         <textarea placeholder="Descrição do problema" ng-model="post.descricao"></textarea>
                     </label>
                 </div>
+                <label class="item item-input item-select">
+                        <div class="input-label">
+                          Oferece risco?
+                        </div>
+                        <select>
+                            <option selected>Não</option>
+                            <option>Sim/option>
+                        </select>
+                </label> 
+
                 <div class="row">
                     
                     <div class="col">

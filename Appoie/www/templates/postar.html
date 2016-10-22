@@ -19,7 +19,18 @@
                             <option>Segurança</option>
                             <option>Trânsito</option>
                         </select>
-                    </label>                   
+                    </label>  
+                    <label class="item item-input item-select">
+                        <div class="input-label">
+                             Sexo
+                        </div>
+                        <select>
+                            <option selected>Masculino</option>
+                            <option>Feminino</option>
+                             <option>Outros</option>
+                        </select>
+                    </label>                 
+                    
                     <label class="item item-input">
                         <input type="text" placeholder="Título" ng-model="post.titulo">
                     </label>
@@ -30,11 +41,11 @@
                 <div class="row">
                     
                     <div class="col">
-                        <button class="button button-block button-stable" ng-click="">
+                        <button class="button button-block button-outline button-assertive" ng-click="voltar()">
                             Cancelar
                         </button>    
                     </div><div class="col">
-                        <button class="button button-block button-dark" ng-click="adicionarMarker(post)">
+                        <button class="button button-block button-outline button-balanced" ng-click="adicionarMarker(post)">
                             Avançar
                         </button>    
                     </div>

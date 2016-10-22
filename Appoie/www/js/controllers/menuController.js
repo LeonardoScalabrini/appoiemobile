@@ -1,5 +1,9 @@
-app.controller('menuController', function($scope, $ionicPopup, $rootScope, $cordovaCamera, $state) {
+app.controller('menuController', function($scope, $ionicPopup, $rootScope, $cordovaCamera, $location, $state) {
 	
+  $scope.stateCheck = function(){
+ $scope.show = $location.path() == '/app/postar';
+ return $scope.show;
+};
 
     $scope.inserirPostagem = function(){
             var confirmPopup = $ionicPopup.confirm({

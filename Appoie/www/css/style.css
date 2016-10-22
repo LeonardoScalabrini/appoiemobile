@@ -19,13 +19,12 @@
   height: 60px;
   padding: 25px;
   font-size: 30px;
-    background: #32a2a4;
+    background: #387ef5;
 
 /*  background: #575756;
 */  position: fixed;  
   bottom: 20px; 
   margin: 0 auto;
-  left: 20px;
   right: 20px; 
   border-radius: 100%;
 }
@@ -72,7 +71,8 @@
 /*---------------------------------------------------------------*/
 
 .menubar{
-  background: #32a2a4;
+  /*background: #32a2a4;*/
+  background: #387ef5;
 }
 
 .logo{
@@ -94,7 +94,7 @@ textarea{
 .bar.bar-dark {
 /*    background-color: #575756;
     border-color:  #575756;
-*/    color: #fff; 
+*/    color: #387ef5; 
 }
 #novaPostagem{
 /*  background-color: #575756;
@@ -113,7 +113,6 @@ textarea{
   padding-top: -10px;
 }
 #fotoPerfil{
-  background-color: #32a2a4;
   padding-top: 0px;
   margin-top: 0px;
 }
@@ -121,10 +120,10 @@ textarea{
   margin-top: 0px;
   margin-bottom: 0px;
   padding-top: 17px;
-  color: #fff;
+  color: #000000;
 }
 #fotoPerfil p{
-  color: #fff;
+  color: #000000;
 }
 .list{
   padding-top: 0px;
@@ -132,25 +131,42 @@ textarea{
 .itensMenu{
   padding-left: 15px; 
 }
-.itensMenu ul li {
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-.itensMenu ul li a{
-  text-decoration: none;
-  color: #000;
-  font-size: 15px;
-  font-weight: bold;
-  padding-left: 30px;
-}
+
 .ion-android-locate{
   font-size: 30px;
   color: #808080;
 }
-.ion-settings{
-  font-size: 30px;
-  color: #808080;
+
+.menu .logo {
+    height: 35px;
+    width: 35px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
+
+
+.menu.menu-left * {
+    font-weight: bold;
+}
+
+.menu-open .ion-navicon {
+    transform: rotate(-360deg);
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.menu-open .ion-navicon:before {
+    content: "\f2ca";
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+
 
 
 

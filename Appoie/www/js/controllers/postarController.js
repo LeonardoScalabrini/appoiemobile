@@ -11,6 +11,10 @@ app.controller('postarController', function($scope, $ionicPopup, $rootScope, $co
         $state.go("app.mapa");
     }
 
+    $scope.voltar = function(){
+            $state.go('app.postagens');
+        }
+
     
     
 

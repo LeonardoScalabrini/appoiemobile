@@ -28,6 +28,45 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     })
 
+    .state('app.minhasPostagens', {
+      url: '/minhasPostagens',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/minhasPostagens.html'
+        }
+      }
+    })
+
+    .state('app.perfil', {
+      url: '/perfil',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/perfil.html',
+          controller: 'perfilController'
+        }
+      }
+    })
+
+    .state('app.alterarEmail', {
+      url: '/perfil/alterarEmail',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/alterarEmail.html',
+          controller: 'perfilController'
+        }
+      }
+    })
+
+    .state('app.alterarSenha', {
+      url: '/alterarSenha',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/alterarSenha.html',
+          controller: 'perfilController'
+        }
+      }
+    })
+
     .state('app.postar', {
       url: '/postar',
       views: {

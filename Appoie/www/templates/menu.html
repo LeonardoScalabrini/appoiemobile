@@ -5,18 +5,64 @@
         <div class="bar bar-header">
             <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
             <h1 class="title">Appoie</h1>
-            <button id="novaPostagem" class="button button-icon icon-right ion-ios-plus" ng-click="inserirPostagem()"></button>
+            <button id="novaPostagem" class="button button-icon icon-right ion-ios-search"></button>
+
         </div>
       </ion-nav-buttons>
     </ion-nav-bar>
+
+<ion-tabs ng-hide="stateCheck()" class="tabs-top tabs-striped tabs-icon-top tabs-color-active-positive">
+
+   <!-- Chats Tab -->
+  <ion-tab title="Minhas Publicações" icon-off="ion-ios-compose-outline" icon-on="ion-ios-compose" href="#/app/minhasPostagens">
+    <ion-nav-view name="Minhas Postagens"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Dashboard Tab -->
+  <ion-tab title="Mapa" icon-off="ion-ios-location-outline" icon-on="ion-ios-location" href="#/app/postagens">
+    <ion-nav-view name="Mapa"></ion-nav-view>
+  </ion-tab>
+
+  <!-- Account Tab -->
+  <ion-tab title="Perfil" icon-off="ion-ios-person-outline" icon-on="ion-ios-person" href="#/app/perfil">
+    <ion-nav-view name="Perfil"></ion-nav-view>
+  </ion-tab>
+
+</ion-tabs>
+    
+  
     
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
 
+
   <ion-side-menu side="left">
-    <ion-header-bar class="menubar"></ion-header-bar>
+
+
+  <ion-side-menu side="left">
+        <ion-header-bar class="menubar">
+           <span class="logo" style="background: url('img/menulogo.png'); background-size: cover;"></span>
+        </ion-header-bar>
+
+
+        <ion-content class="stable-bg has-expanded-header">
+            <ion-list>
+                <ion-item id="fotoPerfil" class="item-avatar">
+                  <img src="img/blankprofile.png">
+                  <h4>Appoie</h4>
+                  <p>Maringá, PR</p>
+                </ion-item>
+                <ion-item  menu-close="">Filtros</ion-item>
+                <ion-item  menu-close="">Como Funciona</ion-item>
+                <ion-item  menu-close="">Configurações</ion-item>
+                <ion-item  menu-close="">Sair</ion-item>
+            </ion-list>
+
+    <!-- <ion-header-bar class="menubar"></ion-header-bar>
     
+
     <ion-content>
+    
       <ion-list>
         <div id="fotoPerfil" class="item-avatar">
               <img src="img/blankprofile.png">
@@ -26,17 +72,13 @@
         <div class="itensMenu">
           <ul> 
             <li>
-              <i class="ion-android-locate"></i>
-              <a menu-close href="#/app/postagens">Publicações</a>
-            </li>
-            <li>
-              <i class="ion-settings"></i>
+              <i class="ion-ios-gear"></i>
               <a menu-close href="#/app/configuracoes">Configurações</a>
             </li>
             
           </ul>  
         </div>  
-      </ion-list>
+      </ion-list> -->
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>

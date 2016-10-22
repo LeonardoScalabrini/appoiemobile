@@ -1,0 +1,48 @@
+<ion-view title="Editar Perfil">
+
+    <ion-content overflow-scroll="true" padding="true" class="has-subheader">
+        <div style="line-height: 250px; border: 1px solid rgb(238, 238, 238); border-radius: 3px; text-align: center; background-color: rgb(255, 255, 255);">
+            <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
+        </div>
+
+
+        <form class="list">
+            <label class="item item-input">
+                <input type="text" placeholder="Nome">
+            </label>
+
+            <label class="item item-input">
+                <input type="text" placeholder="Sobrenome">
+            </label>
+
+            <label class="item item-input item-select">
+                <div class="input-label">
+                  Sexo
+                </div>
+                <select>
+                    <option selected>Masculino</option>
+                    <option>Feminino</option>
+                     <option>Outros</option>
+                </select>
+            </label>
+
+            <label class="item item-input">
+                <input type="date">
+            </label>
+
+            <div class="row" padding="true">
+                <button class="button button-outline button-block button-positive" ng-click="changeView('alterarEmail')">
+                    Alterar E-mail
+                </button>
+
+                <button class="button button-outline button-block button-positive" ng-click="changeView('alterarSenha')">
+                    Alterar Senha
+                </button>
+            </div>
+
+
+            
+            <button  class="button button-balanced  button-block button-outline">SALVAR</button>
+        </form>
+    </ion-content>
+</ion-view>

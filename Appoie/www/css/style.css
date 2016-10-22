@@ -11,29 +11,29 @@
     height: 100%;
 }
 
-/*---------------BOTÃO SOBRE O MAPA-------------------------*/
+/*---------------BOTÃO SOBRE AS POSTAGENS-------------------------*/
 
-.float-button {
+#button-postagens {
   border-radius: 5px;
   width: 60px;
   height: 60px;
   padding: 25px;
+  font-size: 30px;
     background: #387ef5;
 
 /*  background: #575756;
 */  position: fixed;  
-  background: #32a2a4;
-  /*background: #575756;*/
-  position: fixed;  
   bottom: 20px; 
   margin: 0 auto;
   right: 20px; 
   border-radius: 100%;
 }
-.float-button .height_fix {
+
+#button-postagens .height_fix {
   margin-top: 100%;
 }
-.float-button .content {
+
+#button-postagens .content {
   position: absolute;
   left: 0;
   height: 100%;
@@ -42,6 +42,37 @@
   margin-top: -10px; 
   color: #ffffff;
 }
+
+/*---------------BOTÃO SOBRE O MAPA-------------------------*/
+
+#button-concluir {
+  border-radius: 5px;
+  width: 60px;
+  height: 60px;
+  padding: 25px;
+  font-size: 30px;
+  background: #32a2a4;
+  /*background: #575756;*/
+  position: fixed;  
+  bottom: 20px; 
+  margin: 0 auto;
+  left: 20px;
+  right: 20px; 
+  border-radius: 100%;
+}
+#button-concluir .height_fix {
+  margin-top: 100%;
+}
+#button-concluir .content {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  margin-top: -10px; 
+  color: #ffffff;
+}
+
 
 /*-----------------TEXTO SOBRE O MAPA-------------------------*/
 

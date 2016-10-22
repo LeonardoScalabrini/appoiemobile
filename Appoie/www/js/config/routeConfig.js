@@ -78,7 +78,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     })
 
     .state('app.postagens', {
-      cache: false,
+      cache: true,
       url: '/postagens',
       views: {
         'menuContent': {

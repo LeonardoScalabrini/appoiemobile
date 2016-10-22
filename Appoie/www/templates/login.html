@@ -1,0 +1,33 @@
+<ion-view>
+	<div class="loginBackground">
+		<ion-content>
+		    <div class="logoLogin">
+		    	<img src="img/logoMobile.png">
+		    </div>
+
+		   	<div class="formLogin">
+		   		<form name="loginForm">
+		   			<h6>Faça Login</h6>
+			   		<label id="formLoginEmail" class="item item-input">
+			    		<input type="email" placeholder="E-mail" name="emailLogin" ng-model="login.email" minlength="4" maxlength="100"> 
+			  		</label>
+			  		<label id="formLogin" class="item item-input">
+			    		<input type="password" placeholder="Senha" name="senhaLogin" ng-model="login.senha" minlength="6">
+			  		</label>
+			  		<button id="buttonLogin" class="button button-stable" ng-click="logar(login)">
+			  			E N T R A R
+					</button>
+				</form>
+				
+		  	</div>
+		  	<div class="loginFacebook">
+		  		<h6>ou</h6>
+		  		<button id="buttonFacebook" class="button icon-left ion-social-facebook">Entre com o <span>Facebook</span></button>	
+		  	</div>
+		  	<div class="Cadastre-se">
+		  		<h5>Ainda não é cadastrado? Então</h5>
+		  		<a href=""><h4>C A D A S T R E - S E >></h4></a>	
+		  	</div>
+	  	</ion-content>
+	</div>
+</ion-view>

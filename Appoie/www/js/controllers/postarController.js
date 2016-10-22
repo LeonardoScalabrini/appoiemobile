@@ -3,10 +3,10 @@ app.controller('postarController', function($scope, $ionicPopup, $rootScope, $co
 	$rootScope.publicacao = {};
 
 	$scope.adicionarMarker = function (post){
-
+		debugger;
 		$rootScope.publicacao.titulo = post.titulo;
 		$rootScope.publicacao.descricao = post.descricao;
-		$rootScope.publicacao.categoria = "Arborização"; //post.categoria;
+		$rootScope.publicacao.categoria = post.categoria;
 
         $state.go("app.mapa");
     }

@@ -87,6 +87,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
         }
       }
     })
+
+     .state('login', {
+        url: "/login",
+          templateUrl: "templates/login.html",
+          controller : "loginController"        
+      })    
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/postagens');
+  // $urlRouterProvider.otherwise('/app/postagens');
+ $urlRouterProvider.otherwise('/login');
 })

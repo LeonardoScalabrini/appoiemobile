@@ -2,21 +2,29 @@ app.service('mapService', function ($http) {
 
 	this.salvar = function (post)
 	{
-		return $http.post('/publicacao/salvar', post);
+		return $http.post('http://192.168.137.235:8080/publicacao/salvar', post);
+		//return $http.post('http://localhost:8080/publicacao/salvar', post);
+
 	}
 
 	this.getMarkers = function ()
 	{
-		return $http.get('publicacao/marcadores');
+		return $http.get('http://192.168.137.235:8080/publicacao/marcadores');
+		//return $http.get('http://localhost:8080/publicacao/marcadores');
+
 	}
 
 	this.getIcons = function ()
 	{
-		return $http.get('publicacao/icones');
+		return $http.get('http://192.168.137.235:8080/publicacao/icones');
+		//return $http.get('http://localhost:8080/publicacao/icones');
+
 	}
 
 	this.getPostMin = function (id) {
-		return $http.get('publicacao/previa/' + id);
+		return $http.get('http://192.168.137.235:8080/publicacao/previa/' + id);
+		//return $http.get('http://localhost:8080/publicacao/previa/' + id);
+
 	}
 
 });

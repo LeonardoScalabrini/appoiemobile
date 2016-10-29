@@ -1,8 +1,14 @@
 app.controller('menuController', function($scope, $ionicPopup, $rootScope, $cordovaCamera, $location, $state) {
 	
   $scope.stateCheck = function(){
- $scope.show = $location.path() == '/app/postar';
- return $scope.show;
+
+ var location = $location.path();
+ 
+ if(location !='/app/postagens' && location !='/app/minhasPostagens' && location !='/app/perfil' && location !='/app/connectionException'){
+  $scope.show = location;
+  return $scope.show;
+ }
+ 
 };
 
     $scope.inserirPostagem = function(){
@@ -48,5 +54,27 @@ app.controller('menuController', function($scope, $ionicPopup, $rootScope, $cord
                 $state.go("app.postar");
             }
         }
+
+        $scope.filters =[{name: 'Filtros', items: ['teste']  }];
+
+    
+
+  
+  /*
+   * if given group is the selected group, deselect it
+   * else, select the given group
+   */
+  $scope.toggleFilter = function(filter) {
+    if ($scope.isFilterShown(filter)) {
+      $scope.shownFilter = null;
+    } else {
+      $scope.shownFilter = filter;
+    }
+  };
+  $scope.isFilterShown = function(filter) {
+    return $scope.shownFilter === filter;
+  };
+
+
 
 });

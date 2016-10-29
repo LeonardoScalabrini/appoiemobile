@@ -52,10 +52,44 @@
                   <h4>Appoie</h4>
                   <p>Maringá, PR</p>
                 </ion-item>
-                <ion-item  menu-close="">Filtros</ion-item>
-                <ion-item  menu-close="">Como Funciona</ion-item>
-                <ion-item  menu-close="">Configurações</ion-item>
-                <ion-item  menu-close="">Sair</ion-item>
+
+
+
+                <div ng-repeat="filter in filters">
+                    <ion-item class="item-icon-left"
+                              ng-click="toggleFilter(filter)"
+                              ng-class="{active: isFilterShown(filter)}">
+                        <i class="icon" ng-class="isFilterShown(filter) ? 'ion-minus' : 'ion-plus'"></i>
+                      &nbsp;
+                      {{filter.name}}
+                    </ion-item>
+                    <ion-item class="item-accordion"
+                              ng-repeat="item in filter.items"
+                              ng-show="isFilterShown(filter)">
+                      {{item}}
+                    </ion-item>
+                 </div>
+             
+
+                <ion-item class="item-icon-left">
+                      <i class="icon ion-help"></i>
+                Como Funciona
+                 </ion-item>
+
+
+                <ion-item class="item-icon-left">
+                      <i class="icon ion-gear-a"></i>
+                Configurações
+                 </ion-item>
+
+                 <ion-item class="item-icon-left">
+                      <i class="icon ion-log-out"></i>
+                Sair
+                 </ion-item>
+
+
+
+
             </ion-list>
 
     <!-- <ion-header-bar class="menubar"></ion-header-bar>

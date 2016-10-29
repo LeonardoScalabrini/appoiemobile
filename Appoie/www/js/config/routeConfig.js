@@ -37,6 +37,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     })
 
+    .state('app.connectionException', {
+      url: '/connectionException',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/connectionException.html'
+        }
+      }
+    })
+
     .state('app.perfil', {
       url: '/perfil',
       views: {

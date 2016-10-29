@@ -233,6 +233,7 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
           
         }
          
-    });
-
+    }, function(error){
+      $state.go('app.connectionException');
+  });
 });

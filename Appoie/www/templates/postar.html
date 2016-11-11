@@ -7,17 +7,22 @@
                 </div>
                 <div class="descricaoPostagem">
                     <label class="item item-input item-select">
-                        <span class="input-label">Categoria</span>
+
+                        <div class="input-label">
+                          Categoria
+                        </div>
                         <select name="categoria" ng-model="post.categoria" required>
                             <option ng-show="publicacao.categoria.$invalid" value="" selected>Selecione</option>
                             <option value="ARBORIZACAO">Arborização</option>
-                            <option value="ILUMINACAO">Iluminacao</option>
-
+                            <option value="DEFESACIVIL">Defesa Civil</option>
+                            <option value="DEFESACIVIL">Fundo de Vale</option>
+                            <option value="ILUMINACAO">Iluminação</option>
                             <option value="PAVIMENTACAO">Pavimentação</option>
-
+                            <option value="SANEAMENTOBASICO">Saneamento Básico</option>
                             <option value="SEGURANCA">Segurança</option>
+                            <option value="TERRENOBALDIO">Terreno Baldio</option>
+                            <option value="TRANSPORTEPUBLICO">Transporte Público</option>                        
 
-                            <option value="TRANSPORTEPUBLICO">Trânsito</option>
                         </select>
                     </label>                
                     
@@ -36,12 +41,21 @@
                                 <input type="range" name="criticidade" min="1" max="3"   ng-model="post.criticidade" value="post.criticidade">
                             <i class="icon ion-volume-high"></i>
                         </div>
+
                     </label>
                 </div>
                 
                 <div class="labelCamposObrigatorios assertive">
                 <label ng-show="publicacao.$invalid">Todos os campos são obrigatórios</label>      
                 </div>        
+
+                        <select>
+                            <option selected>Não</option>
+                            <option>Sim</option>
+                        </select>
+                </label> 
+
+
                 <div class="row">
                     <div class="col">
                         <button class="button button-block button-outline button-assertive" ng-click="voltar()">

@@ -4,6 +4,7 @@ app.service('loginService', function ($http) {
 	{
 		//return $http.post("http://localhost:8080/usuario/auth", usuario);
 		return $http.post("http://localhost:9092/usuario/auth", usuario);
+
 	};
 
 	this.recuperarSenha = function ()

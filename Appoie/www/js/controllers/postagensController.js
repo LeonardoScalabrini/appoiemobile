@@ -1,8 +1,12 @@
-app.controller('postagensController', function($scope, $ionicPopup, $rootScope, $cordovaGeolocation, $state, mapService) {
-
-	var options = {timeout: 10000, enableHighAccuracy: true, EnableContinuousZoom: true};
+app.controller('postagensController', function($scope, $ionicPopup, $rootScope, $ionicLoading, $cordovaGeolocation, $state, $compile, $ionicModal, mapService, $timeout) {
+  
+  var infoWindowAnterior;
+  var tempID;
+  var idPublicacao;
+  var markerClicked;
+	
+  var options = {timeout: 10000, enableHighAccuracy: true, EnableContinuousZoom: true};
   $scope.icones = [];
-
 
     $cordovaGeolocation.getCurrentPosition(options).then(function(position){
 
@@ -10,7 +14,7 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
       
         var mapOptions = {
           center: posicaoAtual,
-          zoom: 15,
+          zoom: 17,
           mapTypeId: google.maps.MapTypeId.ROADMAP,
           disableDefaultUI: true
         };
@@ -47,34 +51,30 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
           // ...
         });
           {
-           enableHighAccuracy: true
+            enableHighAccuracy: true
           }
         }, 1);
-
 
         if ($scope.icones.length == 0)
         {
           mapService.getIcons().then(function (response) {
-
             $scope.icones = response.data;
             console.log($scope.icones);
 
             mapService.getMarkers().then(function (response) {
-            
               $scope.marcadores = response.data;
               $scope.initMarkers();
-                    
             }, function (response) {
 
-          
             });
 
           }, function (response) {
 
           });
-
         }
 
+// ------------------INICIA OS MARKERS---------------        
+        
         $scope.initMarkers = function()
         {
           var marcador;
@@ -94,6 +94,8 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
 
         }
 
+// ------------------SETA OS ICONES DAS CATEGORIA NOS MAPAS---------------        
+
         $scope.setMarkers= function(marcador)
         {
           var icone = new Image();
@@ -105,7 +107,6 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
           }   
 
           if (icone.src == "") return;
-            //debugger;
             var marker = new google.maps.Marker({
             position: new google.maps.LatLng(marcador.lat, marcador.lng),
             map: $scope.map,
@@ -114,125 +115,95 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
             draggable: false
           });
 
-          mapService.getPostMin(marcador.idPublicacao).then(function(response) {
-                  
-            $scope.postMin = response.data;
-            idPublicacao = $scope.postMin.idPublicacao;
-            console.log($scope.postMin);
-
-            var infowindow = new google.maps.InfoWindow({
-              content: '<md-card id="iw-container" ng-controller="mapController">'
-
-                        + '<div class="iw-title">'+ $scope.postMin.titulo +'</div>'
-
-                        + '<div class="iw-content">'
-                        +   '<img class="img-publicacao" src="'+ $scope.postMin.foto +'" alt="">'
-                        +   '</div>'
-
-                        + '<div class="iw-footer">'
-                        +   '<div layout="row">'
-
-                        +     '<div flex class="apoiar">'
-
-                        //+       '<img src="/img/logo-apoiar.png">'
-                        +       '<p>Apoiar</p>'
-                    
-                        +     '</div>'
-
-                        +     '<div flex class="qtdApoiadores">'
-                        +       '<p>'+ $scope.postMin.qtdApoiadores +' Apoiadores</p>'
-                        +     '</div>'
-
-                        +   '</div>'
-                        +   '</div>'
-
-                        + '<div class="iw-btn-modal">'
-                        +   '<div layout="row">'
-
-                        +     '<div flex class="show-modal">'
-                        +       '<md-button class="md-button md-raised md-primary">VER MAIS</md-button>'
-                        +     '</div>'
-
-                        +   '</div>'
-                        +   '</div>'
-                        +'</md-card>'            
-
-            });
-                
-            marker.addListener('click', function() {
-              infowindow.open($scope.map, marker);
-            });
-
-            google.maps.event.addListener(infowindow, 'domready', function() {
-
-              var iwOuter = $('.gm-style-iw');
-              var iwBackground = iwOuter.prev();
-
-              // Remover o div da sombra do fundo
-              iwBackground.children(':nth-child(2)').css({'display' : 'none'});
-
-              // Remover o div de fundo branco
-              iwBackground.children(':nth-child(4)').css({'display' : 'none'});
-              iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px'});
-
-              var iwCloseBtn = iwOuter.next();
-              var indicador = iwOuter.prev();
-
-              indicador.css({
-                zIndex: 1
-              })
-
-              // Aplica o efeito desejado ao botão fechar
-              iwCloseBtn.css({
-                opacity: '1', // por padrão o botão fechar tem uma opacidade de 0.7
-                right: '28px', 
-                top: '8px', // reposicionamento do botão
-                border: '1px solid #48b5e9', // aumento da borda do botão e nova cor
-                'border-radius': '13px', // efeito circular
-                'box-shadow': '0 0 5px #3990B9' // efeito 3D para salientar o botão
-              });
-
-              // A API aplica automaticamente 0.7 de opacidade ao botão após o evento mouseout.
-              // Esta função reverte esse evento para o valor desejado.
-              iwCloseBtn.mouseout(function(){
-                $(this).css({opacity: '1'});
-              });
-
-              var btnApoiar = iwOuter.find('.apoiar > p');
-              //var imgApoiar = iwOuter.find('.apoiar > img');
-
-              btnApoiar.on('click', function(event) {
-
-                event.preventDefault();
-
-                if (!$(this).hasClass('apoiado'))
-                {
-                  // mapService.apoiar($scope.postMin.idPublicacao).then(function (response) {
-
-                  // }, function (response) {
-
-                  // });
-                }
-                else
-                {
-                  // mapService.apoiar($scope.postMin.idPublicacao).then(function (response) {
-
-                  // }, function (response) {
-
-                  // });
-                }
-                  
-
-              });
-
-            });
-
-          }, function(response) {
-
-          });      
+// ------------------CHAMA A INFOWINDOW--------------------        
           
-        }
-         
+          marker.addListener('click', function(){
+
+            $ionicLoading.show({template: '<ion-spinner icon="android"></ion-spinner>'});
+            
+            $timeout(function(){
+
+              mapService.getPostMax(marcador.idPublicacao).then(function(response) {
+                  $ionicLoading.hide();
+                  $scope.postMax = response.data;
+                  $ionicModal.fromTemplateUrl('modalPublicacao.html', {
+                    scope: $scope,
+                    animation: 'slide-in-up'
+                  }).then(function(modal) {
+                    $scope.modal = modal;
+                  });
+                  var htmlInfoWindow = '<div id="InfoWindow">'
+                                +   '<div class="iw-title">'+ $scope.postMax.titulo +'</div>'
+
+                                +   '<div class="iw-content item-image">'
+                                +    '<img class="img-publicacao" ng-src="'+ $scope.postMax.fotos[0].foto +'" alt="">'
+                                +   '</div>'
+
+                                +   '<div class="iw-footer">'
+                                +    '<div class="row">'
+
+                                +       '<div class="apoiar">'
+
+                                +         '<p>Apoiar</p>'
+                            
+                                +       '</div>'
+
+                                +       '<div class="qtdApoiadores">'
+                                +         '<p>'+ $scope.postMax.qtdApoiadores +' Apoiadores</p>'
+                                +       '</div>'
+
+                                +     '</div>'
+                                +   '</div>'
+
+
+                                +   '<div class="show-modal">'
+                                +     '<button class="button button-block button-dark" ng-click="modal.show()"><h5>DETALHES</h5></button>'
+                                +   '</div>'
+                                +'</div>'            
+
+                  var compilado = $compile(htmlInfoWindow)($scope)
+
+                  var infowindow = new google.maps.InfoWindow({ 
+                      content: compilado[0]
+                  }); 
+
+           
+// ------------------FUNÇÃO RESPONSÁVEL POR FECHAR UMA INFOWINDOW AO CLICAR SOBRE OUTRO MARKER---------------        
+
+                  if(infoWindowAnterior != null) {
+                      if(infoWindowAnterior == infowindow) {
+                        if(isInfoWindowOpen(infowindow)) { 
+                          infoWindowAnterior = infowindow;
+                          infowindow.close(); 
+                        }
+                        else{
+                          infowindow.open($rootScope.map, marker);
+                          infowindowAnterior = infowindow;
+                        }
+                      }
+                      else {
+                        infoWindowAnterior.close();
+                        infoWindowAnterior = infowindow;
+                        infowindow.open($rootScope.map, marker);    
+                      }           
+                  }   
+                  else {
+                    infoWindowAnterior = infowindow;
+                    infowindow.open($rootScope.map, marker);
+                  }  
+
+              }, function(response){}); 
+
+            });
+
+          });
+        }         
     });
+  
+    isInfoWindowOpen = function(infoWindow){
+      var map = infoWindow.getMap();
+      return (map !== null && typeof map !== "undefined");
+    }
+
 
 });

@@ -11,6 +11,7 @@
     height: 100%;
 }
 
+
 /*---------------BOTÃO SOBRE AS POSTAGENS-------------------------*/
 
 #button-postagens {
@@ -19,7 +20,7 @@
   height: 60px;
   padding: 25px;
   font-size: 30px;
-    background: #387ef5;
+    background: #03A9F4;
 
 /*  background: #575756;
 */  position: fixed;  
@@ -51,7 +52,7 @@
   height: 60px;
   padding: 25px;
   font-size: 30px;
-  background: #32a2a4;
+  background: #33cd5f;
   /*background: #575756;*/
   position: fixed;  
   bottom: 20px; 
@@ -91,7 +92,7 @@
 
 /*-----------------CONNECTIONEXCEPTION-------------------------*/
 .exception{
-  background-color: #ffffff;
+  background-color: #03A9F4;
 }
 .connection-exception .row-center{
     position:absolute;
@@ -148,9 +149,50 @@ i.centerBigIcon {
 
 /*---------------------------------------------------------------*/
 
+.headerBar{
+  background-color: #03A9F4;
+}
+
+.button.ion-navicon{
+  color: #ffffff;
+}
+
+.button.ion-ios-search{
+  color: #ffffff;
+}
+
+.img-logo-header > span > img {
+  width: 70px;
+  margin-top: 8px;
+}
+
+.word-logo-header {
+  margin-left: 10px;
+}
+
+.word-logo-header span {
+  color: #fff;
+}
+
+.side-options{
+  padding: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+.side-options > span > i{
+  float: right;
+    color: #ccc;
+    margin-right: 10px;
+}
+
+/*---------------------------------------------------------------*/
+
+.labelCamposObrigatorios{
+  text-align: center;
+}
 .menubar{
   /*background: #32a2a4;*/
-  background: #387ef5;
+  background: #03A9F4;
 }
 
 .logo{

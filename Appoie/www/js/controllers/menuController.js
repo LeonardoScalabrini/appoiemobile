@@ -75,6 +75,11 @@ app.controller('menuController', function($scope, $ionicPopup, $rootScope, $cord
     return $scope.shownFilter === filter;
   };
 
+  $scope.logout = function(){
+    var usuario = null;
+    localStorage.setItem("usuario", usuario);
+    $state.go("login");
+  }
 
 
 });

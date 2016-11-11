@@ -1,29 +1,33 @@
 <ion-side-menus enable-menu-with-back-views="true">
   <ion-side-menu-content>
-    <ion-nav-bar class="bar-dark">
+    <ion-nav-bar class="headerBar">
       <ion-nav-buttons side="left">
         <div class="bar bar-header">
-            <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+            <button id="menuLateral"class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
             <h1 class="title">Appoie</h1>
-            <button id="novaPostagem" class="button button-icon icon-right ion-ios-search"></button>
+
+              <div class="img-logo-header">
+                <span style="font-size: 20px;">
+                  <img src="img/logo-escrita.png">
+                </span>
+              </div>
 
         </div>
       </ion-nav-buttons>
     </ion-nav-bar>
 
-<ion-tabs ng-hide="stateCheck()" class="tabs-top tabs-striped tabs-stable tabs-icon-top tabs-color-active-positive">
 
-   <!-- Chats Tab -->
+
+<ion-tabs ng-hide="stateCheck()" class="tabs-top tabs-striped tabs-stable tabs-icon-top tabs-color-active-dark">
+
   <ion-tab title="Minhas Publicações" icon-off="ion-ios-compose-outline" icon-on="ion-ios-compose" href="#/app/minhasPostagens">
     <ion-nav-view name="Minhas Postagens"></ion-nav-view>
   </ion-tab>
 
-  <!-- Dashboard Tab -->
   <ion-tab title="Mapa" icon-off="ion-ios-location-outline" icon-on="ion-ios-location" href="#/app/postagens">
     <ion-nav-view name="Mapa"></ion-nav-view>
   </ion-tab>
 
-  <!-- Account Tab -->
   <ion-tab title="Perfil" icon-off="ion-ios-person-outline" icon-on="ion-ios-person" href="#/app/perfil">
     <ion-nav-view name="Perfil"></ion-nav-view>
   </ion-tab>
@@ -55,7 +59,7 @@
 
 
 
-                <div ng-repeat="filter in filters">
+                <!-- <div ng-repeat="filter in filters">
                     <ion-item class="item-icon-left"
                               ng-click="toggleFilter(filter)"
                               ng-class="{active: isFilterShown(filter)}">
@@ -68,26 +72,21 @@
                               ng-show="isFilterShown(filter)">
                       {{item}}
                     </ion-item>
-                 </div>
+                 </div> -->
              
 
-                <ion-item class="item-icon-left">
-                      <i class="icon ion-help"></i>
-                Como Funciona
-                 </ion-item>
 
+              
+               
+              <div class="side-options">
+                <i class="icon ion-gear-a"></i>
+              <span class="span">Configurações <i class="material-icons"></i></span>
+              </div>
 
-                <ion-item class="item-icon-left">
-                      <i class="icon ion-gear-a"></i>
-                Configurações
-                 </ion-item>
-
-                 <ion-item class="item-icon-left">
-                      <i class="icon ion-log-out"></i>
-                Sair
-                 </ion-item>
-
-
+              <div class="side-options" ng-click="logout()">
+                <i class="icon ion-log-out"></i>
+              <span class="span">Sair <i class="material-icons"></i></span>
+              </div>
 
 
             </ion-list>

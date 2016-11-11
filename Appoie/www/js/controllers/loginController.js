@@ -15,10 +15,22 @@ app.controller('loginController', function($scope, $ionicPopup, $rootScope, $sta
 
   //   $scope.recuperarSenha();
   // };
+  $scope.checkUser = function(){
+
+      var usuario = localStorage.getItem("usuario");
+
+      if(usuario != "null") {
+        $state.go("app.postagens");
+      } 
+
+  }
+
 
   $scope.logar = function (usuario)
   {
-    if (!usuario) usuario = {};
+
+    localStorage.setItem("usuario", usuario);
+
 
     loginService.logar(usuario).then(function (response)
     {

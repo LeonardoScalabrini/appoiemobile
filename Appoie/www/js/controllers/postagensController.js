@@ -1,4 +1,4 @@
-app.controller('postagensController', function($scope, $ionicPopup, $rootScope, $cordovaGeolocation, $state, mapService) {
+app.controller('postagensController', function($http, $scope, $ionicPopup, $rootScope, $cordovaGeolocation, $state, mapService) {
 
 	var options = {timeout: 10000, enableHighAccuracy: true, EnableContinuousZoom: true};
   $scope.icones = [];
@@ -74,6 +74,13 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
           });
 
         }
+
+
+        $scope.doRefresh = function() {
+          initMarkers();
+          setMarkers();
+        };
+
 
         $scope.initMarkers = function()
         {

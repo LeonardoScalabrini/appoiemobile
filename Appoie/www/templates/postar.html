@@ -7,51 +7,54 @@
                 </div>
                 <div class="descricaoPostagem">
                     <label class="item item-input item-select">
-                        <div class="input-label">
-                          Categoria
-                        </div>
-                        <select ng-model="post.categoria">
+                        <span class="input-label">Categoria</span>
+                        <select name="categoria" ng-model="post.categoria" required>
+                            <option ng-show="publicacao.categoria.$invalid" value="" selected>Selecione</option>
                             <option value="ARBORIZACAO">Arborização</option>
                             <option value="ILUMINACAO">Iluminacao</option>
 
-                            <option>Pavimentação</option>
+                            <option value="PAVIMENTACAO">Pavimentação</option>
 
-                            <option>Segurança</option>
+                            <option value="SEGURANCA">Segurança</option>
 
-                            <option>Trânsito</option>
+                            <option value="TRANSPORTEPUBLICO">Trânsito</option>
                         </select>
                     </label>                
                     
                     <label class="item item-input item-stacked-label">
                         <span class="input-label">Título</span>
-                        <input type="text" placeholder="Título" ng-model="post.titulo">
+                        <input type="text" placeholder="Título" ng-model="post.titulo" required>
                     </label>
                     <label class="item item-input item-stacked-label">
                         <span class="input-label">Descrição</span>
-                        <textarea placeholder="Descrição do problema" ng-model="post.descricao"></textarea>
+                        <textarea placeholder="Descrição do problema" ng-model="post.descricao" required></textarea>
+                    </label>
+                    <label class="item item-range item-stacked-label">
+                        <span class="input-label">Criticidade</span>
+                        <div class="range range-positive">
+                            <i class="icon ion-volume-low"></i>
+                                <input type="range" name="criticidade" min="1" max="3"   ng-model="post.criticidade" value="post.criticidade">
+                            <i class="icon ion-volume-high"></i>
+                        </div>
                     </label>
                 </div>
-                <label class="item item-input item-select">
-                        <div class="input-label">
-                          Oferece risco?
-                        </div>
-                        <select>
-                            <option selected>Não</option>
-                            <option>Sim/option>
-                        </select>
-                </label> 
-
+                
+                <div class="labelCamposObrigatorios assertive">
+                <label ng-show="publicacao.$invalid">Todos os campos são obrigatórios</label>      
+                </div>        
                 <div class="row">
                     <div class="col">
                         <button class="button button-block button-outline button-assertive" ng-click="voltar()">
                             Cancelar
                         </button>    
+
                     </div><div class="col">
-                        <button class="button button-block button-outline button-balanced" ng-click="adicionarMarker(post)">
+                        <button  class="button button-block button-outline button-balanced" ng-click="adicionarMarker(post)" ng-disabled="publicacao.$invalid">
                             Avançar
                         </button>    
                     </div>
                 </div>
+
             </form>
         </div>
     </ion-content>

@@ -12,7 +12,7 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
     $cordovaGeolocation.getCurrentPosition(options).then(function(position){
 
         var posicaoAtual = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-      
+        getAddress(); 
         var mapOptions = {
           center: posicaoAtual,
           zoom: 17,
@@ -79,6 +79,26 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
           setMarkers();
         };
 
+    
+//-------------------ENDEREÇO ATUAL------------------
+
+  function getAddress(){
+
+           // This is making the Geocode request
+           var geocoder = new google.maps.Geocoder();
+
+           geocoder.geocode({ 'latLng': posicaoAtual }, function (results, status) {
+           // This is checking to see if the Geoeode Status is OK before proceeding
+           if (status == google.maps.GeocoderStatus.OK) {
+
+               enderecoCompleto = results[0].formatted_address;
+               $rootScope.cidadeAtual = results[0].address_components[4].long_name;
+               $rootScope.estadoAtual = results[0].address_components[5].long_name;
+
+              
+           }
+          });
+        }
 
 // ------------------INICIA OS MARKERS---------------        
         

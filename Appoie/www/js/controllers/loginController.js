@@ -29,14 +29,16 @@ app.controller('loginController', function($scope, $ionicPopup, $rootScope, $sta
   $scope.logar = function (usuario)
   {
 
-    localStorage.setItem("usuario", usuario);
-
-
+      
     loginService.logar(usuario).then(function (response)
     {
-      // Capturar token do backend
+      
+      //Pega os dados do
+      usuario = response.data;
+      //grava no STORAGE
+      localStorage.setItem("usuario", JSON.stringify(usuario));
+
       $state.go("app.postagens");
-      // window.location.href = "#/home";
     },
     function (response)
     {

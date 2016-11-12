@@ -6,39 +6,49 @@
 
         <form class="list">
             <label class="item item-input">
-                <input type="text" placeholder="Nome">
+                <input id="nome" type="text" placeholder="Nome">
             </label>
 
             <label class="item item-input">
-                <input type="text" placeholder="Sobrenome">
+                <input id="sobrenome" type="text" placeholder="Sobrenome">
             </label>
 
             <label class="item item-input item-select">
-                <div class="input-label">
+                <span class="input-label">
                   Sexo
-                </div>
-                <select>
-                    <option selected>Masculino</option>
-                    <option>Feminino</option>
-                     <option>Outros</option>
+                </span>
+                <select id="sexo">
+                    <option value="MASCULINO">Masculino</option>
+                    <option value="FEMININO">Feminino</option>
+                    <option value="OUTROS">Outros</option>
                 </select>
             </label>
+
             <label class="item item-input">
                  <span class="input-label">Data de Nascimento:</span>
-               <input type="date" placeholder="Data">
+               <input id="dataNascimento" type="date" value="2013-01-08">
             </label>
 
             <div class="row" padding="true">
-                <button class="button button-outline button-block button-positive" ng-click="changeView('alterarEmail')">
-                    Alterar E-mail
-                </button>
-
-                <button class="button button-outline button-block button-positive" ng-click="changeView('alterarSenha')">
-                    Alterar Senha
-                </button>
+                <div class="col">
+                    <button class="button button-outline button-block button-positive" ng-click="changeView('alterarEmail')">
+                        Alterar E-mail
+                    </button>
+                </div>
+                
+                <div class="col">
+                    <button class="button button-outline button-block button-positive" ng-click="changeView('alterarSenha')">
+                        Alterar Senha
+                    </button>
+                </div>
+                
             </div>
 
-            <button  class="button button-balanced  button-block button-outline">SALVAR</button>
+            <div class="col">
+                <button id="botaoSalvarPerfil" class="button button-balanced  button-block button-outline">SALVAR</button>
+            </div>
+            
+
         </form>
     </ion-content>
 </ion-view>

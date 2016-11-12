@@ -1,9 +1,44 @@
-app.controller('menuController', function($scope, $ionicPopup, $rootScope, $cordovaCamera, $location, $state) {
+app.controller('menuController', function($scope, $ionicPopup, $rootScope, $cordovaGeolocation, $cordovaCamera, $location, $state) {
 	
 
-  $scope.changeView = function(local){
-    console.log(local);
+  var usuario = JSON.parse(localStorage.getItem("usuario"));
+  document.getElementById('nomeMenu').innerHTML= usuario.nome;
+  document.getElementById('sobrenomeMenu').innerHTML= usuario.sobrenome;
+  // document.getElementById('cidadeMenu').innerHTML= $scope.cidadeAtual;
+  // document.getElementById('estadoMenu').innerHTML= $scope.estadoAtual;
+  
 
+  var options = {timeout: 10000, enableHighAccuracy: true, EnableContinuousZoom: true};
+
+  $cordovaGeolocation.getCurrentPosition(options).then(function(position){
+
+        var posicaoAtual = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        getAddress();
+        function getAddress(){
+
+           // This is making the Geocode request
+           var geocoder = new google.maps.Geocoder();
+
+           geocoder.geocode({ 'latLng': posicaoAtual }, function (results, status) {
+           // This is checking to see if the Geoeode Status is OK before proceeding
+           if (status == google.maps.GeocoderStatus.OK) {
+
+               enderecoCompleto = results[0].formatted_address;
+               $scope.cidadeAtual = results[0].address_components[4].long_name;
+               $scope.estadoAtual = results[0].address_components[5].long_name;
+               console.log($scope.estadoAtual);
+               
+               
+              
+           }
+          });
+        }
+      });
+
+  
+
+
+  $scope.changeView = function(local){
     $state.go(local);
 
   }
@@ -75,6 +110,7 @@ app.controller('menuController', function($scope, $ionicPopup, $rootScope, $cord
     localStorage.setItem("usuario", usuario);
     $state.go("login");
   }
+
 
 
 });

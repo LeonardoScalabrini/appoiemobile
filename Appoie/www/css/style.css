@@ -92,7 +92,7 @@
 
 /*-----------------CONNECTIONEXCEPTION-------------------------*/
 .exception{
-  background-color: #03A9F4;
+  background-color: #d6d6d6;
 }
 .connection-exception .row-center{
     position:absolute;
@@ -190,6 +190,48 @@ i.centerBigIcon {
 .labelCamposObrigatorios{
   text-align: center;
 }
+
+#criticidadeBaixa{
+  text-align: left;
+  margin-left: 6px;
+  font-weight: bold;
+  color: green;
+}
+
+#criticidadeMedia{
+  margin-left: -6px;
+  margin-right: -14px;
+  font-weight: bold;
+  color: orange;
+}
+
+.rangeCriticidade input{
+  margin-top: 0px;
+  margin-bottom: -15px;
+}
+#criticidadeAlta{
+  text-align: right;
+  margin-right: 14px;
+  font-weight: bold;
+  color: red; 
+}
+
+#nomeMenu{
+  margin-left: -5px;
+  margin-right: 5px;
+}
+
+#cidadeMenu{
+  margin-left: -5px;
+  margin-right: 5px;
+}
+
+#localizacaoMenu{
+  margin-left: -5px;
+  margin-right: 5px;
+
+
+}
 .menubar{
   /*background: #32a2a4;*/
   background: #03A9F4;
@@ -244,6 +286,19 @@ textarea{
 #fotoPerfil p{
   color: #000000;
 }
+
+#dataNascimento{
+  text-align: right;
+}
+
+#viewAlterar{
+  padding: 10px;
+}
+
+#botaoSalvarPerfil{
+  margin-top: -15px;
+}
+
 .list{
   padding-top: 0px;
 }

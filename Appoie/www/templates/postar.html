@@ -8,9 +8,9 @@
                 <div class="descricaoPostagem">
                     <label class="item item-input item-select">
 
-                        <div class="input-label">
+                        <span class="input-label">
                           Categoria
-                        </div>
+                        </span>
                         <select name="categoria" ng-model="post.categoria" required>
                             <option ng-show="publicacao.categoria.$invalid" value="" selected>Selecione</option>
                             <option value="ARBORIZACAO">Arborização</option>
@@ -36,10 +36,14 @@
                     </label>
                     <label class="item item-range item-stacked-label">
                         <span class="input-label">Criticidade</span>
-                        <div class="range range-positive">
-                            <i class="icon ion-volume-low"></i>
-                                <input type="range" name="criticidade" min="1" max="3"   ng-model="post.criticidade" value="post.criticidade">
-                            <i class="icon ion-volume-high"></i>
+                        <div class="range rangeCriticidade">
+                            
+                                <input type="range" name="criticidade" min="1" max="3" step="1" value="0" data-ng-model="post.criticidade" data-ng-init="post.criticidade ? post.criticidade = post.criticidade : post.criticidade = 1">
+                        </div>
+                        <div class="row">
+                                <div id="criticidadeBaixa" class="col">Baixa</div>
+                                <div id="criticidadeMedia" class="col">Média</div>
+                                <div id="criticidadeAlta" class="col">Alta</div>
                         </div>
 
                     </label>

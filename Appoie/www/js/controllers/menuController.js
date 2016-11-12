@@ -1,16 +1,12 @@
 app.controller('menuController', function($scope, $ionicPopup, $rootScope, $cordovaCamera, $location, $state) {
 	
-  $scope.stateCheck = function(){
 
+  $scope.changeView = function(local){
+    console.log(local);
 
- var location = $location.path();
- 
- if(location !='/app/postagens' && location !='/app/minhasPostagens' && location !='/app/perfil' && location !='/app/connectionException'){
-  $scope.show = location;
-  return $scope.show;
- }
- 
-};
+    $state.go(local);
+
+  }
 
 
   $scope.inserirPostagem = function(){

@@ -28,14 +28,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
       }
     })
 
-    .state('app.minhasPostagens', {
-      url: '/minhasPostagens',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/minhasPostagens.html'
-        }
-      }
-    })
 
     .state('app.connectionException', {
       url: '/connectionException',

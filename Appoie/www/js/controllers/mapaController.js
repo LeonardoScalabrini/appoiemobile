@@ -28,9 +28,25 @@ app.controller('MapCtrl', function($scope, $ionicPopup, $rootScope, $cordovaGeol
             animation: google.maps.Animation.DROP,
             title: "Marcador " + marcador
           });
+            
+          google.maps.event.addListener(marker, 'dragend', function() 
+          {
+             atualizarPosicao();
+          });  
+
           marcador++;
           map.panTo(marker.getPosition());
           map.setZoom(17);
+          atualizarPosicao();
+
+          function atualizarPosicao (){
+              posicaoMarcador = marker.getPosition();
+              getAddress(); 
+          }
+          
+
+
+
 
   //         marker.addListener('click', function() {
   //           posicaoMarcador = marker.getPosition();
@@ -43,10 +59,7 @@ app.controller('MapCtrl', function($scope, $ionicPopup, $rootScope, $cordovaGeol
   // });
           
           $scope.sucesso = function () {
-
-            posicaoMarcador = marker.getPosition();
-            getAdress();
-
+            
             $rootScope.publicacao.lat = posicaoMarcador.lat();
             $rootScope.publicacao.lng = posicaoMarcador.lng();
             $rootScope.publicacao.fotos = [$rootScope.foto];
@@ -76,15 +89,12 @@ app.controller('MapCtrl', function($scope, $ionicPopup, $rootScope, $cordovaGeol
 
 
 
-        function getAdress() {
+        function getAddress() {
 
            // This is making the Geocode request
            var geocoder = new google.maps.Geocoder();
 
            geocoder.geocode({ 'latLng': posicaoMarcador }, function (results, status) {
-           if (status !== google.maps.GeocoderStatus.OK) {
-               alert(status);
-           }
            // This is checking to see if the Geoeode Status is OK before proceeding
            if (status == google.maps.GeocoderStatus.OK) {
 

@@ -60,7 +60,6 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
         {
           mapService.getIcons().then(function (response) {
             $scope.icones = response.data;
-            console.log($scope.icones);
 
             mapService.getMarkers().then(function (response) {
               $scope.marcadores = response.data;
@@ -97,7 +96,7 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
                 marcador = $scope.marcadores[i];
                 $scope.setMarkers(marcador);
 
-              }, 250 * i)
+              }, 100 * i)
              })(i);
           }
 

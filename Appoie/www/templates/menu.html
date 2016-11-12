@@ -18,25 +18,22 @@
     </ion-nav-bar>
 
 
-    <ion-tabs ng-hide="stateCheck()" class="tabs-top tabs-striped tabs-stable tabs-icon-top tabs-color-active-positive">
+    <!-- <ion-tabs class="tabs-top tabs-striped tabs-stable tabs-icon-top tabs-color-active-positive">
 
-       <!-- Chats Tab -->
       <ion-tab title="Minhas Publicações" icon-off="ion-ios-compose-outline" icon-on="ion-ios-compose" href="#/app/minhasPostagens">
         <ion-nav-view name="Minhas Postagens"></ion-nav-view>
       </ion-tab>
 
-      <!-- Dashboard Tab -->
+
       <ion-tab title="Mapa" icon-off="ion-ios-location-outline" icon-on="ion-ios-location" href="#/app/postagens">
         <ion-nav-view name="Mapa"></ion-nav-view>
       </ion-tab>
 
-      <!-- Account Tab -->
       <ion-tab title="Perfil" icon-off="ion-ios-person-outline" icon-on="ion-ios-person" href="#/app/perfil">
         <ion-nav-view name="Perfil"></ion-nav-view>
       </ion-tab>
 
-
-    </ion-tabs>
+    </ion-tabs> -->
     
     <ion-nav-view name="menuContent"></ion-nav-view>
   </ion-side-menu-content>
@@ -51,7 +48,7 @@
         <ion-content class="stable-bg has-expanded-header">
             <ion-list>
                 <ion-item id="fotoPerfil" class="item-avatar">
-                  <img src="img/blankprofile.png">
+                  <img src="img/blankprofile.png" menu-close ng-click="changeView('app.perfil')">
                   <h4>Appoie</h4>
                   <p>Maringá, PR</p>
                 </ion-item>
@@ -76,7 +73,10 @@
              
 
 
-              
+              <div class="side-options">
+                <i class="ion-ios-location"></i>
+              <span class="span" menu-close ng-click="changeView('app.postagens')">Mapa <i class="material-icons"></i></span>
+              </div>
                
               <div class="side-options">
                 <i class="icon ion-gear-a"></i>

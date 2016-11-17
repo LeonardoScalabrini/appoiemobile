@@ -29,7 +29,6 @@ app.controller('loginController', function($scope, $ionicPopup, $rootScope, $sta
   $scope.logar = function (usuario)
   {
 
-      
     loginService.logar(usuario).then(function (response)
     {
       

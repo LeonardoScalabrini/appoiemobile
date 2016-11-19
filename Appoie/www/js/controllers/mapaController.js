@@ -44,20 +44,6 @@ app.controller('MapCtrl', function($scope, $ionicPopup, $rootScope, $cordovaGeol
               getAddress(); 
           }
           
-
-
-
-
-  //         marker.addListener('click', function() {
-  //           posicaoMarcador = marker.getPosition();
-  //   console.log(posicaoMarcador);
-
-  //   var latitude;
-  //   latitude = posicaoMarcador.lat();
-  //   alert(posicaoMarcador.lat());
-
-  // });
-          
           $scope.sucesso = function () {
             
             $rootScope.publicacao.lat = posicaoMarcador.lat();
@@ -113,5 +99,30 @@ app.controller('MapCtrl', function($scope, $ionicPopup, $rootScope, $cordovaGeol
   }, function(error){
     console.log("Could not get location");
   });
+
+  $scope.apoiarPublicacaoDetalhada = function(publicacao) {
+    if(!publicacao.apoiado) {
+      mapService.apoiar(publicacao.idPublicacao).then(function() {
+        publicacao.qtdApoiadores++;
+        publicacao.apoiado = true;
+      },
+      function(){
+
+      });
+    }      
+
+    }
+
+    $scope.desapoiarPublicacaoDetalhada = function(publicacao) {
+      if(publicacao.apoiado) {
+      mapService.desapoiar(publicacao.idPublicacao).then(function() {
+        publicacao.qtdApoiadores--;
+        publicacao.apoiado = false;
+      },
+      function(){
+
+      });
+    }    
+    }
 
 });

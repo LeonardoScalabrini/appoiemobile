@@ -147,7 +147,10 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
           
           marker.addListener('click', function(){
 
-            $ionicLoading.show({template: '<ion-spinner icon="android"></ion-spinner>'});
+            $ionicLoading.show({template: '<ion-spinner icon="android"></ion-spinner>'
+                                        + '<h6 id="spinner">Carregando...</h6>'
+                              });
+
             
             $timeout(function(){
 
@@ -161,10 +164,11 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
                     $scope.modal = modal;
                   });
                   var htmlInfoWindow = '<div id="InfoWindow">'
-                                +   '<div class="iw-title">'+ $scope.postMax.titulo +'</div>'
+                                +   '<div class="iw-title"> {{postMax.titulo}} </div>'
 
                                 +   '<div class="iw-content item-image">'
-                                +    '<img class="img-publicacao" ng-src="'+ $scope.postMax.fotos[0].foto +'" alt="">'
+                                +    '<img class="img-publicacao" ng-src="{{postMax.foto}" alt="">'
+                                
                                 +   '</div>'
 
                                 +   '<div class="iw-footer">'
@@ -177,7 +181,7 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
                                 +       '</div>'
 
                                 +       '<div class="qtdApoiadores">'
-                                +         '<p>'+ $scope.postMax.qtdApoiadores +' Apoiadores</p>'
+                                +         '<p> {{postMax.qtdApoiadores}} Apoiadores</p>'
                                 +       '</div>'
 
                                 +     '</div>'
@@ -195,7 +199,89 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
                       content: compilado[0]
                   }); 
 
-           
+                  google.maps.event.addListener(infowindow, 'domready', function() {
+
+            var iwOuter = $('.gm-style-iw');
+            var iwBackground = iwOuter.prev();
+
+            iwBackground.children(':nth-child(2)').css({'display' : 'none'});
+            iwBackground.children(':nth-child(4)').css({'display' : 'none'});
+            iwBackground.children(':nth-child(3)').find('div').children().css({'box-shadow': 'rgba(72, 181, 233, 0.6) 0px 1px'});
+
+          var iwCloseBtn = iwOuter.next();
+          var indicador = iwOuter.prev();
+
+          indicador.css({
+            zIndex: 1
+          })
+
+          iwCloseBtn.css({
+            opacity: '1',
+            right: '28px', 
+            top: '8px',
+            border: '1px solid #c2c2c2',
+            'border-radius': '13px',
+            'box-shadow': '0 0 5px #c2c2c2'
+          });
+
+          iwCloseBtn.mouseout(function(){
+            $(this).css({opacity: '1'});
+          });
+
+          var btnApoiar = iwOuter.find('.apoiar > p');
+
+
+          if($scope.postMax.apoiado) {
+            
+            btnApoiar.addClass('apoiado');
+            btnApoiar.html('Apoiado');
+          }
+          else {
+            btnApoiar.removeClass('apoiado');
+            btnApoiar.html('Apoiar');
+          }
+
+          btnApoiar.on('click', function(event) {
+
+            event.preventDefault();
+
+            if (!btnApoiar.hasClass('apoiado'))
+            {
+                  mapService.apoiar($scope.postMax.idPublicacao).then(function (response) {
+
+                btnApoiar.addClass('apoiado');
+                btnApoiar.html('Apoiado')
+                //$(this).html('Apoiado');
+
+
+                $scope.postMax.qtdApoiadores++;
+
+               }, function (response) {
+
+               });
+            }
+            else
+            {
+                 mapService.apoiar($scope.postMax.idPublicacao).then(function (response) {
+
+                btnApoiar.removeClass('apoiado');
+                btnApoiar.html('Apoiar')
+                //$(this).html('Apoiado');
+
+
+                                 $scope.postMax.qtdApoiadores--;
+
+               }, function (response) {
+
+               });
+
+
+            } 
+
+          });
+
+        });
+
 // ------------------FUNÇÃO RESPONSÁVEL POR FECHAR UMA INFOWINDOW AO CLICAR SOBRE OUTRO MARKER---------------        
 
                   if(infoWindowAnterior != null) {

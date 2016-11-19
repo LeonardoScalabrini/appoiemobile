@@ -1,4 +1,4 @@
-app.controller('loginController', function($scope, $ionicPopup, $rootScope, $state, loginService) {
+app.controller('loginController', function($scope, $ionicPopup, $rootScope, $state, loginService, $cordovaFacebook) {
 
   // $scope.senhaPerdida = false;
   // $scope.modalTitle = "Entre com sua conta";
@@ -37,6 +37,7 @@ app.controller('loginController', function($scope, $ionicPopup, $rootScope, $sta
       usuario = response.data;
       //grava no STORAGE
       localStorage.setItem("usuario", JSON.stringify(usuario));
+      console.log(JSON.parse(localStorage.getItem("usuario"))); 
 
       $state.go("app.postagens");
     },
@@ -44,6 +45,47 @@ app.controller('loginController', function($scope, $ionicPopup, $rootScope, $sta
     {
       
     });
+  }
+
+  $scope.logarFacebook = function (){
+  $cordovaFacebook.login(["public_profile", "email", "user_friends"])
+     .then(function(success) {
+        $state.go("app.postagens");
+        $scope.dadosUsuario();
+     }, function (error) {
+
+     });
+  }
+
+
+  $scope.usuarioFacebook ={};
+  $scope.dadosUsuario = function(){
+    $cordovaFacebook.api('me?fields=id,first_name,last_name,birthday,gender,email,location,picture')
+      .then(function(user) {
+        $scope.user = user;
+           $scope.usuarioFacebook.idFacebook =$scope.user.id;
+           $scope.usuarioFacebook.nome = $scope.user.first_name;
+           $scope.usuarioFacebook.sobrenome = $scope.user.last_name;
+           $scope.usuarioFacebook.dataDeNascimento = $scope.user.birthday;
+           if($scope.user.gender === 'male'){
+              $scope.usuarioFacebook.sexo ='MASCULINO';
+           }else{
+              $scope.usuarioFacebook.sexo ='FEMININO';
+           }
+           $scope.usuarioFacebook.email = $scope.user.email;
+           $scope.usuarioFacebook.nomeCidade = $scope.user.location.name;
+           $scope.usuarioFacebook.foto =$scope.user.picture.data.url;
+
+           loginService.logarFacebook($scope.usuarioFacebook).then(function (response) {
+
+
+         }, function (response) {
+
+         });
+
+
+      });
+
   }
   
 });

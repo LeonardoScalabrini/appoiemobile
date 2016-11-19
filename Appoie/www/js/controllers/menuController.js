@@ -2,10 +2,10 @@ app.controller('menuController', function($scope, $ionicPopup, $rootScope, $cord
 	
 
   var usuario = JSON.parse(localStorage.getItem("usuario"));
-  document.getElementById('nomeMenu').innerHTML= usuario.nome;
-  document.getElementById('sobrenomeMenu').innerHTML= usuario.sobrenome;
-  // document.getElementById('cidadeMenu').innerHTML= $scope.cidadeAtual;
-  // document.getElementById('estadoMenu').innerHTML= $scope.estadoAtual;
+  document.getElementById('nomeMenu').innerHTML = usuario.nome;
+  document.getElementById('sobrenomeMenu').innerHTML = usuario.sobrenome;
+  document.getElementById('cidadeMenu').innerHTML = usuario.cidade;
+  document.getElementById('estadoMenu').innerHTML = usuario.estado;
   
 
   var options = {timeout: 10000, enableHighAccuracy: true, EnableContinuousZoom: true};

@@ -1,8 +1,8 @@
 <ion-view cache-view="false" view-title="Postagens">
-  
+
     <ion-content on-refresh="doRefresh()">
       <div id="mapPostagens" data-tap-disabled="true"></div>
-      
+
       <div id="button-postagens" class="float-button" ng-click="inserirPostagem()">
         <span class="height-fix">
          <a ui-sref="add-trip" class="content">
@@ -14,7 +14,7 @@
 
     <script id="modalPublicacao.html" type="text/ng-template">
       <ion-modal-view>
-        <ion-header-bar class="bar bar-header bar-dark">
+        <ion-header-bar id="headerBarPublicacaoDetalhada"class="bar bar-header bar-dark">
           <h1 class="title">Detalhes</h1>
           <button class="button button-clear button-primary" ng-click="modal.hide()">Voltar</button>
         </ion-header-bar>
@@ -24,7 +24,7 @@
                 <h4>{{postMax.titulo}}</h4>
             </div>
             <div id="fotoDetalhada" class="item item-image">
-               <img ng-src="{{postMax.foto}}">
+               <img ng-src="{{postMax.fotos[0].foto}}">
             </div>
             <div class="item categoriaDetalhada">
                 <p><span>Categoria: </span>{{postMax.categoria}}</p>
@@ -35,7 +35,7 @@
             <div class="item item-text-wrap">
                 <p><span>Descrição: </span>{{postMax.descricao}}</p>
             </div>
-            
+
           </div>
         </ion-content>
       </ion-modal-view>

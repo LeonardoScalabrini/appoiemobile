@@ -1,10 +1,10 @@
 app.controller('postagensController', function($scope, $ionicPopup, $rootScope, $ionicLoading, $cordovaGeolocation, $state, $compile, $ionicModal, mapService, $timeout) {
-  
+
   var infoWindowAnterior;
   var tempID;
   var idPublicacao;
   var markerClicked;
-	
+
   var options = {timeout: 10000, enableHighAccuracy: true, EnableContinuousZoom: true};
 
   $scope.icones = [];
@@ -12,7 +12,7 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
     $cordovaGeolocation.getCurrentPosition(options).then(function(position){
 
         var posicaoAtual = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        getAddress(); 
+        getAddress();
         var mapOptions = {
           center: posicaoAtual,
           zoom: 17,
@@ -30,7 +30,7 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
           strokeColor: '#fff',
           strokeWeight: 1.5
         }
-  
+
         var localizacaoAtual = new google.maps.Marker({
           clickable: false,
           position: posicaoAtual,
@@ -44,7 +44,7 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
           localizacaoAtual.setPosition(posicaoAtual);
         }
 
-        setInterval(function() { 
+        setInterval(function() {
         if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
           var posicao = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
           atualizarPosicao(posicao);
@@ -79,7 +79,7 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
           setMarkers();
         };
 
-    
+
 //-------------------ENDEREÇO ATUAL------------------
 
   function getAddress(){
@@ -95,20 +95,20 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
                $rootScope.cidadeAtual = results[0].address_components[4].long_name;
                $rootScope.estadoAtual = results[0].address_components[5].long_name;
 
-              
+
            }
           });
         }
 
-// ------------------INICIA OS MARKERS---------------        
-        
+// ------------------INICIA OS MARKERS---------------
+
 
         $scope.initMarkers = function()
         {
           var marcador;
 
           for (var i = 0; i < $scope.marcadores.length; i++) {
-          
+
             (function(i){
                 setTimeout(function(){
 
@@ -122,7 +122,7 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
 
         }
 
-// ------------------SETA OS ICONES DAS CATEGORIA NOS MAPAS---------------        
+// ------------------SETA OS ICONES DAS CATEGORIA NOS MAPAS---------------
 
         $scope.setMarkers= function(marcador)
         {
@@ -132,7 +132,7 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
           {
             if($scope.icones[i].categoria == marcador.categoria)
               icone.src = $scope.icones[i].foto;
-          }   
+          }
 
           if (icone.src == "") return;
             var marker = new google.maps.Marker({
@@ -143,20 +143,21 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
             draggable: false
           });
 
-// ------------------CHAMA A INFOWINDOW--------------------        
-          
+// ------------------CHAMA A INFOWINDOW--------------------
+
           marker.addListener('click', function(){
 
             $ionicLoading.show({template: '<ion-spinner icon="android"></ion-spinner>'
                                         + '<h6 id="spinner">Carregando...</h6>'
                               });
 
-            
+
             $timeout(function(){
 
               mapService.getPostMax(marcador.idPublicacao).then(function(response) {
                   $ionicLoading.hide();
                   $scope.postMax = response.data;
+                  console.log($scope.postMax)
                   $ionicModal.fromTemplateUrl('modalPublicacao.html', {
                     scope: $scope,
                     animation: 'slide-in-up'
@@ -167,8 +168,8 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
                                 +   '<div class="iw-title"> {{postMax.titulo}} </div>'
 
                                 +   '<div class="iw-content item-image">'
-                                +    '<img class="img-publicacao" ng-src="{{postMax.foto}" alt="">'
-                                
+                                +    '<img class="img-publicacao" ng-src="'+ $scope.postMax.fotos[0].foto +'" alt="">'
+
                                 +   '</div>'
 
                                 +   '<div class="iw-footer">'
@@ -177,7 +178,7 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
                                 +       '<div class="apoiar">'
 
                                 +         '<p>Apoiar</p>'
-                            
+
                                 +       '</div>'
 
                                 +       '<div class="qtdApoiadores">'
@@ -189,15 +190,15 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
 
 
                                 +   '<div class="show-modal">'
-                                +     '<button class="button button-block button-dark" ng-click="modal.show()"><h5>DETALHES</h5></button>'
+                                +     '<button class="button button-block button-positive" ng-click="modal.show()"><h5>DETALHES</h5></button>'
                                 +   '</div>'
-                                +'</div>'            
+                                +'</div>'
 
                   var compilado = $compile(htmlInfoWindow)($scope)
 
-                  var infowindow = new google.maps.InfoWindow({ 
+                  var infowindow = new google.maps.InfoWindow({
                       content: compilado[0]
-                  }); 
+                  });
 
                   google.maps.event.addListener(infowindow, 'domready', function() {
 
@@ -217,7 +218,7 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
 
           iwCloseBtn.css({
             opacity: '1',
-            right: '28px', 
+            right: '28px',
             top: '8px',
             border: '1px solid #c2c2c2',
             'border-radius': '13px',
@@ -232,7 +233,7 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
 
 
           if($scope.postMax.apoiado) {
-            
+
             btnApoiar.addClass('apoiado');
             btnApoiar.html('Apoiado');
           }
@@ -276,19 +277,19 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
                });
 
 
-            } 
+            }
 
           });
 
         });
 
-// ------------------FUNÇÃO RESPONSÁVEL POR FECHAR UMA INFOWINDOW AO CLICAR SOBRE OUTRO MARKER---------------        
+// ------------------FUNÇÃO RESPONSÁVEL POR FECHAR UMA INFOWINDOW AO CLICAR SOBRE OUTRO MARKER---------------
 
                   if(infoWindowAnterior != null) {
                       if(infoWindowAnterior == infowindow) {
-                        if(isInfoWindowOpen(infowindow)) { 
+                        if(isInfoWindowOpen(infowindow)) {
                           infoWindowAnterior = infowindow;
-                          infowindow.close(); 
+                          infowindow.close();
                         }
                         else{
                           infowindow.open($rootScope.map, marker);
@@ -298,25 +299,25 @@ app.controller('postagensController', function($scope, $ionicPopup, $rootScope, 
                       else {
                         infoWindowAnterior.close();
                         infoWindowAnterior = infowindow;
-                        infowindow.open($rootScope.map, marker);    
-                      }           
-                  }   
+                        infowindow.open($rootScope.map, marker);
+                      }
+                  }
                   else {
                     infoWindowAnterior = infowindow;
                     infowindow.open($rootScope.map, marker);
-                  }  
+                  }
 
-              }, function(response){}); 
+              }, function(response){});
 
             });
 
 
           }, function(response) {
 
-          });      
-          
+          });
+
         }
-         
+
     }, function(error){
       $state.go('app.connectionException');
   });

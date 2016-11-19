@@ -23,10 +23,10 @@
     background: #03A9F4;
 
 /*  background: #575756;
-*/  position: fixed;  
-  bottom: 20px; 
+*/  position: fixed;
+  bottom: 20px;
   margin: 0 auto;
-  right: 20px; 
+  right: 20px;
   border-radius: 100%;
 }
 
@@ -40,7 +40,7 @@
   height: 100%;
   width: 100%;
   text-align: center;
-  margin-top: -10px; 
+  margin-top: -10px;
   color: #ffffff;
 }
 
@@ -54,11 +54,11 @@
   font-size: 30px;
   background: #33cd5f;
   /*background: #575756;*/
-  position: fixed;  
-  bottom: 20px; 
+  position: fixed;
+  bottom: 20px;
   margin: 0 auto;
   left: 20px;
-  right: 20px; 
+  right: 20px;
   border-radius: 100%;
 }
 #button-concluir .height_fix {
@@ -70,7 +70,7 @@
   height: 100%;
   width: 100%;
   text-align: center;
-  margin-top: -10px; 
+  margin-top: -10px;
   color: #ffffff;
 }
 
@@ -129,11 +129,11 @@ i.centerBigIcon {
 
 .float-text {
   font-size: 24px;
-  position: fixed;  
+  position: fixed;
   bottom: 95%;
   margin: 0 auto;
   left: 20px;
-  right: 20px; 
+  right: 20px;
 }
 .float-text .height_fixo {
   margin-bottom: 100%;
@@ -143,13 +143,17 @@ i.centerBigIcon {
   left: 0;
   width: 100%;
   text-align: center;
-  margin-top: -15px; 
+  margin-top: -15px;
   color: #ffffff;
 }
 
 /*---------------------------------------------------------------*/
 
 .headerBar{
+  background-color: #03A9F4;
+}
+
+#headerBarPublicacaoDetalhada{
   background-color: #03A9F4;
 }
 
@@ -214,7 +218,7 @@ i.centerBigIcon {
   text-align: right;
   margin-right: 14px;
   font-weight: bold;
-  color: red; 
+  color: red;
 }
 
 #nomeMenu{
@@ -248,23 +252,23 @@ i.centerBigIcon {
   padding: 0px 0px 0px 10px;
 }
 .descricaoPostagem{
-  position: static; 
-} 
+  position: static;
+}
 textarea{
   height: 40px;
 }
 .bar.bar-dark {
 /*    background-color: #575756;
     border-color:  #575756;
-*/    color: #387ef5; 
+*/    color: #387ef5;
 }
 #novaPostagem{
 /*  background-color: #575756;
   border-color:  #575756;
 */}
-.title{
+/*.title{
   padding-left: 50px;
-}
+}*/
 .miniatura{
   padding: 10px;
 }
@@ -275,16 +279,12 @@ textarea{
   padding-top: -10px;
 }
 #fotoPerfil{
-  padding-top: 0px;
-  margin-top: 0px;
+  padding-top: 14px;
 }
-#fotoPerfil img{
-  margin-top: 8px;
-}
+
 #fotoPerfil h4{
   margin-top: 0px;
   margin-bottom: 0px;
-  padding-top: 17px;
   color: #000000;
 }
 #fotoPerfil p{
@@ -307,7 +307,7 @@ textarea{
   padding-top: 0px;
 }
 .itensMenu{
-  padding-left: 15px; 
+  padding-left: 15px;
 }
 
 .ion-android-locate{
@@ -376,7 +376,7 @@ textarea{
 #formLoginEmail{
   width: 80%;
   margin: 0 auto;
-  margin-top: 10px; 
+  margin-top: 10px;
 }
 .formLogin form {
   text-align: center;
@@ -393,7 +393,7 @@ textarea{
   margin-top: 20px;
   background-color: transparent;
   border: 2px solid #fff;
-  color: #fff; 
+  color: #fff;
   border-radius: 6px;
 }
 .loginFacebook{
@@ -401,7 +401,7 @@ textarea{
 }
 .loginFacebook h6{
   text-align: center;
-  color: #fff; 
+  color: #fff;
 }
 #buttonFacebook{
   width: 80%;
@@ -425,6 +425,5 @@ span{
 }
 .Cadastre-se h5{
   text-align: center;
-  color: #fff; 
+  color: #fff;
 }
-

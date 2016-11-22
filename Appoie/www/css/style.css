@@ -11,7 +11,6 @@
     height: 100%;
 }
 
-
 /*---------------BOTÃO SOBRE AS POSTAGENS-------------------------*/
 
 #button-postagens {
@@ -20,7 +19,7 @@
   height: 60px;
   padding: 25px;
   font-size: 30px;
-    background: #03A9F4;
+    background: #ff4081;
 
 /*  background: #575756;
 */  position: fixed;
@@ -52,7 +51,7 @@
   height: 60px;
   padding: 25px;
   font-size: 30px;
-  background: #33cd5f;
+  background: #ff4081;
   /*background: #575756;*/
   position: fixed;
   bottom: 20px;
@@ -222,24 +221,27 @@ i.centerBigIcon {
 }
 
 #nomeMenu{
+  color:#fff;
   margin-left: -5px;
   margin-right: 5px;
 }
-
+#sobrenomeMenu{
+  color: #fff;
+}
 #cidadeMenu{
+  color: #fff !important;
   margin-left: -5px;
   margin-right: 5px;
 }
-
+#estadoMenu{
+  color: #fff !important;
+}
 #localizacaoMenu{
   margin-left: -5px;
   margin-right: 5px;
-
-
 }
 .menubar{
-  /*background: #32a2a4;*/
-  background: #03A9F4;
+  background: #0288d1;
 }
 
 .logo{
@@ -279,7 +281,9 @@ textarea{
   padding-top: -10px;
 }
 #fotoPerfil{
+  color: #fff;
   padding-top: 14px;
+  background-color: #0288d1;
 }
 
 #fotoPerfil h4{
@@ -300,7 +304,8 @@ textarea{
 }
 
 #botaoSalvarPerfil{
-  margin-top: -15px;
+  margin-top: -10px;
+  width: 95%;
 }
 
 .list{
@@ -426,4 +431,11 @@ span{
 .Cadastre-se h5{
   text-align: center;
   color: #fff;
+}
+.salvarPadrao{
+  background-color: #ff4081;
+  color: #fff;
+}
+.ion-ios-location{
+  font-size: 20px;
 }

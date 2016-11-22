@@ -4,9 +4,8 @@
       <ion-nav-buttons side="left">
         <div class="bar bar-header">
             <button id="menuLateral"class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
-            <h1 class="title">Appoie</h1>
               <div class="img-logo-header">
-                <span style="font-size: 20px;">
+                <span>
                   <img src="img/logo-escrita.png">
                 </span>
               </div>
@@ -22,13 +21,13 @@
 
   <ion-side-menu side="left">
         <ion-header-bar class="menubar">
-           <span class="logo" style="background: url('img/menulogo.png'); background-size: cover;"></span>
+           <span class="logo"></span>
         </ion-header-bar>
 
         <ion-content class="stable-bg has-expanded-header">
             <ion-list>
                 <ion-item id="fotoPerfil" class="item-avatar">
-                  <img src="img/blankprofile.png" menu-close ng-click="changeView('app.perfil')">
+                  <img src="img/user-empty.png" menu-close ng-click="changeView('app.perfil')">
                   <div class="row">
                     <h2 id="nomeMenu"></h2>
                     <h2 id="sobrenomeMenu"></h2>
@@ -39,29 +38,9 @@
                   </div>
                 </ion-item>
 
-
-
-
-                <!-- <div ng-repeat="filter in filters">
-                    <ion-item class="item-icon-left"
-                              ng-click="toggleFilter(filter)"
-                              ng-class="{active: isFilterShown(filter)}">
-                        <i class="icon" ng-class="isFilterShown(filter) ? 'ion-minus' : 'ion-plus'"></i>
-                      &nbsp;
-                      {{filter.name}}
-                    </ion-item>
-                    <ion-item class="item-accordion"
-                              ng-repeat="item in filter.items"
-                              ng-show="isFilterShown(filter)">
-                      {{item}}
-                    </ion-item>
-                 </div> -->
-
-
-
               <div class="side-options">
                 <i class="ion-ios-location"></i>
-              <span class="span" menu-close ng-click="changeView('app.postagens')">Publicações<i class="material-icons"></i></span>
+                <span class="span" menu-close ng-click="changeView('app.postagens')">Publicações<i class="material-icons"></i></span>
               </div>
 
               <div class="side-options">
@@ -75,28 +54,6 @@
               </div>
 
             </ion-list>
-
-    <!-- <ion-header-bar class="menubar"></ion-header-bar>
-
-
-    <ion-content>
-
-      <ion-list>
-        <div id="fotoPerfil" class="item-avatar">
-              <img src="img/blankprofile.png">
-              <h4>Appoie</h4>
-              <p>Maringá, PR</p>
-        </div>
-        <div class="itensMenu">
-          <ul>
-            <li>
-              <i class="ion-ios-gear"></i>
-              <a menu-close href="#/app/configuracoes">Configurações</a>
-            </li>
-
-          </ul>
-        </div>
-      </ion-list> -->
     </ion-content>
   </ion-side-menu>
 </ion-side-menus>

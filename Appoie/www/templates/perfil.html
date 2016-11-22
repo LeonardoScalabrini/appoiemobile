@@ -1,4 +1,4 @@
-<ion-view title="Editar Perfil">
+<ion-view>
     <ion-content overflow-scroll="true" padding="true">
         <div style="line-height: 250px; border: 1px solid rgb(238, 238, 238); border-radius: 3px; text-align: center; background-color: rgb(255, 255, 255);">
             <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
@@ -31,24 +31,18 @@
 
             <div class="row" padding="true">
                 <div class="col">
-                    <button class="button button-outline button-block button-positive" ng-click="changeView('alterarEmail')">
+                    <button id="perfilAlterarEmail" class="button button-block button-positive" ng-click="changeView('alterarEmail')">
                         Alterar E-mail
                     </button>
                 </div>
                 
                 <div class="col">
-                    <button class="button button-outline button-block button-positive" ng-click="changeView('alterarSenha')">
+                    <button id="perfilAlterarSenha" class="button button-block button-positive" ng-click="changeView('alterarSenha')">
                         Alterar Senha
                     </button>
                 </div>
-                
             </div>
-
-            <div class="col">
-                <button id="botaoSalvarPerfil" class="button button-balanced  button-block button-outline">SALVAR</button>
-            </div>
-            
-
+            <button id="botaoSalvarPerfil" class="salvarPadrao center button button-block">SALVAR</button>
         </form>
     </ion-content>
 </ion-view>

@@ -1,4 +1,4 @@
-<ion-view cache-view="false" view-title="Postagens">
+<ion-view cache-view="false">
 
     <ion-content on-refresh="doRefresh()">
       <div id="mapPostagens" data-tap-disabled="true"></div>
@@ -20,21 +20,27 @@
         </ion-header-bar>
         <ion-content class=has-header>
           <div class="card">
-            <div class= "tituloDetalhada">
-                <h4>{{postMax.titulo}}</h4>
-            </div>
-            <div id="fotoDetalhada" class="item item-image">
-               <img ng-src="{{postMax.fotos[0].foto}}">
-            </div>
             <div class="item categoriaDetalhada">
+                <h2>{{postMax.titulo}}</h2>
+                <div class="fotoDetalhada item-image">
+                  <img ng-src="{{postMax.fotos[0].foto}}">
+                </div>
                 <p><span>Categoria: </span>{{postMax.categoria}}</p>
-            </div>
-            <div class="item criticidadeDetalhada">
+                <p><span>Cidade: </span>{{postMax.cidade}}</p>
                 <p><span>Criticidade: </span>{{postMax.criticidade}}</p>
+                <div id="descricaoDetalhe">
+                  <p><span>Descrição: </span>{{postMax.descricao}}</p>
+                </div>
             </div>
-            <div class="item item-text-wrap">
-                <p><span>Descrição: </span>{{postMax.descricao}}</p>
+            <div class="item infoDetalhada">
+                <h2>Postado por:</h2>
+                <ion-item class="usuario item-avatar">
+                  <img src="img/blankprofile.png">
+                  <h2>{{postMax.usuario}} {{postMax.sobrenomeUsuario}}</h2>
+                  <p id="dataPublicacaoDetalhada">{{postMax.dataPublicacao | date: 'dd/MM/yyyy'}}</p>
+                </ion-item>
             </div>
+          </div>
 
           </div>
         </ion-content>

@@ -1,7 +1,24 @@
 .tituloDetalhada h4{
-  font-weight: bold;
-  text-align: center; 
+	font-weight: bold;
+	text-align: center; 
 }
 #fotoDetalhada{
-  padding: 10px;
+	padding: 10px;
+}
+.categoriaDetalhada h2{
+	font-weight: bold;
+	text-align:  center;
+	font-size: 18px;
+}
+.categoriaDetalhada p{
+	margin-bottom: 10px;
+}
+.fotoDetalhada img{
+	padding: 10px 0px 10px 0px;
+}
+.usuario{
+	border: none;
+}
+.infoDetalhada h2{
+	font-weight: bold;
 }
